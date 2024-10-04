@@ -1,24 +1,23 @@
-import type { MenuProps } from 'antd';
-import type { RouteObject } from '@/router/types';
-import { type FC, type WheelEvent, useState, useEffect, useRef } from 'react';
-import { Button, Dropdown } from 'antd';
-import {
-  LeftOutlined,
-  RightOutlined,
-  ExpandOutlined,
-  CompressOutlined,
-  CloseOutlined,
-  RedoOutlined,
-} from '@ant-design/icons';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useFullscreen } from 'ahooks';
-import { TagItem } from './components';
 import { basicRoutes } from '@/router';
-import { useAppSelector, useAppDispatch } from '@/stores';
-import { addVisitedTags } from '@/stores/modules/tags';
+import type { RouteObject } from '@/router/types';
+import { useAppDispatch, useAppSelector } from '@/stores';
+import { addVisitedTags, closeAllTags, closeTagByKey, closeTagsByType } from '@/stores/modules/tags';
 import { searchRoute } from '@/utils';
-import { closeAllTags, closeTagByKey, closeTagsByType } from '@/stores/modules/tags';
+import {
+  CloseOutlined,
+  CompressOutlined,
+  ExpandOutlined,
+  LeftOutlined,
+  RedoOutlined,
+  RightOutlined,
+} from '@ant-design/icons';
+import { useFullscreen } from 'ahooks';
+import type { MenuProps } from 'antd';
+import { Button, Dropdown } from 'antd';
 import classNames from 'classnames';
+import { type FC, type WheelEvent, useEffect, useRef, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { TagItem } from './components';
 import styles from './index.module.less';
 
 const LayoutTags: FC = () => {
@@ -118,13 +117,10 @@ const LayoutTags: FC = () => {
     if (mainContWidth < mainWidth) {
       leftOffset = 0;
     } else if (tag?.offsetLeft! < -tagsContLeft) {
-      // 标签在可视区域左侧 (The active tag on the left side of the layout_tags-main)
       leftOffset = -tag?.offsetLeft! + mainContPadding;
     } else if (tag?.offsetLeft! > -tagsContLeft && tag?.offsetLeft! + tag?.offsetWidth! < -tagsContLeft + mainWidth) {
-      // 标签在可视区域 (The active tag on the layout_tags-main)
       leftOffset = Math.min(0, mainWidth - tag?.offsetWidth! - tag?.offsetLeft! - mainContPadding);
     } else {
-      // 标签在可视区域右侧 (The active tag on the right side of the layout_tags-main)
       leftOffset = -(tag?.offsetLeft! - (mainWidth - mainContPadding - tag?.offsetWidth!));
     }
     setTagsContLeft(leftOffset);
@@ -185,10 +181,8 @@ const LayoutTags: FC = () => {
     return new Date().getTime().toString();
   };
   const handleReload = () => {
-    // 刷新当前路由，页面不刷新
     const index = visitedTags.findIndex(tab => tab.fullPath === activeTag);
     if (index >= 0) {
-      // 这个是react的特性，key变了，组件会卸载重新渲染
       navigate(activeTag, { replace: true, state: { key: getKey() } });
     }
   };
