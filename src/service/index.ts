@@ -14,10 +14,7 @@ export function loginApi(data: LoginParams): Promise<any> {
 }
 
 export function getUserInfo(): Promise<any> {
-  return httpService({
-    url: '/getUserInfo',
-    method: 'get',
-  });
+  return httpService.get('/getUserInfo');
 }
 
 export function logoutApi() {
