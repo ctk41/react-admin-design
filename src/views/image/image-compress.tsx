@@ -1,11 +1,11 @@
-import { type FC, useState, useEffect } from 'react';
-import { Row, Col, Card, Button, Space, Form, InputNumber, Select } from 'antd';
 import { PageWrapper } from '@/components/Page';
-import { IMAGE_COMPRESS, COMPRESS_IMG_SRC } from '@/settings/websiteSetting';
-import { UploadImage } from '@/components/Upload';
-import { getImageSize, compressImage } from '@/utils/image';
-import { downloadImgByBase64 } from '@/utils/download';
 import SvgIcon from '@/components/SvgIcon';
+import { UploadImage } from '@/components/Upload';
+import { COMPRESS_IMG_SRC, IMAGE_COMPRESS } from '@/settings/websiteSetting';
+import { downloadImgByBase64 } from '@/utils/download';
+import { compressImage, getImageSize } from '@/utils/image';
+import { Button, Card, Col, Form, InputNumber, Row, Select, Space } from 'antd';
+import { type FC, useEffect, useState } from 'react';
 
 interface FormState {
   width: number;
@@ -77,7 +77,7 @@ const ImageCompress: FC = () => {
     <PageWrapper plugin={IMAGE_COMPRESS}>
       <Row gutter={12}>
         <Col span={16}>
-          <Card title='图片区域' bordered={false} bodyStyle={{ height: '500px' }}>
+          <Card title='Image Area' bordered={false} bodyStyle={{ height: '500px' }}>
             <div className='flex-center'>
               <div
                 style={{
@@ -93,7 +93,7 @@ const ImageCompress: FC = () => {
           </Card>
         </Col>
         <Col span={8}>
-          <Card title='设置区域' bordered={false} bodyStyle={{ height: '500px' }}>
+          <Card title='Settings Area' bordered={false} bodyStyle={{ height: '500px' }}>
             <Form
               form={form}
               colon={false}
@@ -104,17 +104,17 @@ const ImageCompress: FC = () => {
               style={{ width: '300px', margin: '60px auto 0' }}
               onFinish={onFinish}
             >
-              <Form.Item label='图片上传'>
-                <UploadImage name='选择图片' isFull onSuccess={handleSuccess} />
+              <Form.Item label='Image Upload'>
+                <UploadImage name='Select Image' isFull onSuccess={handleSuccess} />
               </Form.Item>
-              <Form.Item label='图片尺寸' style={{ marginBottom: 0 }}>
+              <Form.Item label='Image Size' style={{ marginBottom: 0 }}>
                 <Space>
                   <Form.Item name='width'>
                     <InputNumber
                       min={0}
                       max={imageInfo.width}
                       controls={false}
-                      addonBefore={<span>宽</span>}
+                      addonBefore={<span>Width</span>}
                       onChange={(value: any) => handleChange(value, 'height')}
                     />
                   </Form.Item>
@@ -126,13 +126,13 @@ const ImageCompress: FC = () => {
                       min={0}
                       max={imageInfo.height}
                       controls={false}
-                      addonBefore={<span>高</span>}
+                      addonBefore={<span>Height</span>}
                       onChange={(value: any) => handleChange(value, 'width')}
                     />
                   </Form.Item>
                 </Space>
               </Form.Item>
-              <Form.Item label='压缩比例' name='ratio'>
+              <Form.Item label='Compression Ratio' name='ratio'>
                 <InputNumber
                   min={0}
                   max={100}
@@ -142,7 +142,7 @@ const ImageCompress: FC = () => {
                   style={{ width: '100%' }}
                 />
               </Form.Item>
-              <Form.Item label='图片质量' name='quality'>
+              <Form.Item label='Image Quality' name='quality'>
                 <Select
                   options={[
                     { value: 1, label: 100 },
@@ -152,7 +152,7 @@ const ImageCompress: FC = () => {
                   ]}
                 />
               </Form.Item>
-              <Form.Item label='图片格式' name='mimeType'>
+              <Form.Item label='Image Format' name='mimeType'>
                 <Select
                   options={[
                     { value: 'image/png', label: 'PNG' },
@@ -163,7 +163,7 @@ const ImageCompress: FC = () => {
               </Form.Item>
               <Form.Item label=' '>
                 <Button type='primary' htmlType='submit' style={{ width: '100%' }}>
-                  压缩图片
+                  Compress Image
                 </Button>
               </Form.Item>
             </Form>

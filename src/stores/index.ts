@@ -1,7 +1,8 @@
-import type { Store } from 'redux';
-import { configureStore, type ThunkAction, type Action } from '@reduxjs/toolkit';
+import { configureStore, type Action, type ThunkAction } from '@reduxjs/toolkit';
 import { useDispatch, useSelector, type TypedUseSelectorHook } from 'react-redux';
-import { persistStore, persistReducer } from 'redux-persist';
+import type { Store } from 'redux';
+import logger from 'redux-logger';
+import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import appSlice from './modules/app';
 import menuSlice from './modules/menu';
@@ -20,10 +21,17 @@ export const store: Store = configureStore({
     tags: persistReducer(persistConfig, tagsSlice),
     user: persistReducer(persistConfig, userSlice),
   },
-  middleware: getDefaultMiddleware =>
-    getDefaultMiddleware({
+  middleware: getDefaultMiddleware => {
+    const middlewares = getDefaultMiddleware({
       serializableCheck: false,
-    }),
+    });
+
+    if (import.meta.env.MODE === 'development') {
+      middlewares.push(logger);
+    }
+
+    return middlewares;
+  },
   devTools: true,
 });
 

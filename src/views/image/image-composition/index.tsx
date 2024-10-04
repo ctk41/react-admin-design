@@ -1,23 +1,23 @@
-import type { FC, CSSProperties } from 'react';
-import type {
-  TextElementState,
-  ImageElementState,
-  ElementState,
-  ContainerState,
-  ImageObjState,
-  handlerType,
-} from './types';
-import { useState, useMemo } from 'react';
-import { useImmer } from 'use-immer';
-import { Row, Col, Card, Button, Form, message } from 'antd';
 import { RndNode } from '@/components/DndNode';
 import { PageWrapper } from '@/components/Page';
-import { IMAGE_COMPOSITION } from '@/settings/websiteSetting';
 import { RichTextInput, RichTextSetting } from '@/components/RichText';
 import { UploadImage } from '@/components/Upload';
-import { getImageSize, calcImageSize } from '@/utils/image';
-import { textElement, imageElement, containerObj } from './data';
+import { IMAGE_COMPOSITION } from '@/settings/websiteSetting';
+import { calcImageSize, getImageSize } from '@/utils/image';
+import { Button, Card, Col, Form, Row, message } from 'antd';
 import dom2image from 'dom-to-image';
+import type { CSSProperties, FC } from 'react';
+import { useMemo, useState } from 'react';
+import { useImmer } from 'use-immer';
+import { containerObj, imageElement, textElement } from './data';
+import type {
+  ContainerState,
+  ElementState,
+  ImageElementState,
+  ImageObjState,
+  TextElementState,
+  handlerType,
+} from './types';
 
 const ImageComposition: FC = () => {
   const [container, setContainer] = useImmer<ContainerState>(containerObj);
@@ -60,7 +60,7 @@ const ImageComposition: FC = () => {
       type: 'text',
       tag: `text_${tagIndex}`,
       active: false,
-      text: '请输入文本',
+      text: 'Please enter text',
       style: {
         fontFamily: '微软雅黑',
         fontSize: '24px',
@@ -74,7 +74,7 @@ const ImageComposition: FC = () => {
       },
     };
     if (elements.length > 4) {
-      message.warning('图片上最多叠加5个元素!');
+      message.warning('You can add a maximum of 5 elements on the image!');
       return;
     } else {
       setElements(draft => {
@@ -99,7 +99,7 @@ const ImageComposition: FC = () => {
       url: imgObj.url,
     };
     if (elements.length > 4) {
-      message.warning('图片上最多叠加5个元素!');
+      message.warning('You can add a maximum of 5 elements on the image!');
       return;
     } else {
       setElements(draft => {
@@ -111,7 +111,7 @@ const ImageComposition: FC = () => {
 
   const handleDeleteElement = () => {
     if (!activeElementTag) {
-      message.warning('请先选择元素!');
+      message.warning('Please select an element first!');
       return;
     }
     const activeElementIndex = elements.findIndex(item => item.tag === activeElementTag);
@@ -199,7 +199,7 @@ const ImageComposition: FC = () => {
     <PageWrapper plugin={IMAGE_COMPOSITION}>
       <Row gutter={12}>
         <Col span={16}>
-          <Card title='合成区域' bordered={false} bodyStyle={{ height: '600px' }}>
+          <Card title='Composition Area' bordered={false} bodyStyle={{ height: '600px' }}>
             <div className='flex-center'>
               <div id='imageComposition' className='dnd-container' style={{ ...containerStyle }}>
                 {elements.map((item, index) => {
@@ -233,7 +233,7 @@ const ImageComposition: FC = () => {
           </Card>
         </Col>
         <Col span={8}>
-          <Card title='设置区域' bordered={false} bodyStyle={{ height: '600px' }}>
+          <Card title='Settings Area' bordered={false} bodyStyle={{ height: '600px' }}>
             <Form
               colon={false}
               labelCol={{ span: 6 }}
@@ -241,20 +241,20 @@ const ImageComposition: FC = () => {
               labelAlign='left'
               style={{ width: '300px', margin: '0 auto' }}
             >
-              <Form.Item label='选择底图'>
-                <UploadImage name='选择底图' isFull onSuccess={changeBgImg} />
+              <Form.Item label='Select Background Image'>
+                <UploadImage name='Select Background Image' isFull onSuccess={changeBgImg} />
               </Form.Item>
-              <Form.Item label='添加文本'>
+              <Form.Item label='Add Text'>
                 <Button block style={{ width: '100%' }} onClick={handleAddText}>
-                  添加文本
+                  Add Text
                 </Button>
               </Form.Item>
-              <Form.Item label='添加图片'>
-                <UploadImage name='添加图片' isFull onSuccess={uploadImage} />
+              <Form.Item label='Add Image'>
+                <UploadImage name='Add Image' isFull onSuccess={uploadImage} />
               </Form.Item>
-              <Form.Item label='删除元素'>
+              <Form.Item label='Delete Element'>
                 <Button type='primary' danger style={{ width: '100%' }} onClick={handleDeleteElement}>
-                  删除元素
+                  Delete Element
                 </Button>
               </Form.Item>
             </Form>
@@ -270,7 +270,7 @@ const ImageComposition: FC = () => {
             )}
             <div style={{ width: '300px', margin: '0 auto' }}>
               <Button type='primary' style={{ width: '100%' }} onClick={handleComposition}>
-                合成图片
+                Generate Image
               </Button>
             </div>
           </Card>
