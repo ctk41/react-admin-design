@@ -1,15 +1,15 @@
-import { type FC, useState } from 'react'
-import { Row, Col, Space } from 'antd'
-import CountUpCard from './components/CountUpCard'
-import ChartsCard from './components/ChartsCard'
-import { countUpData, pieOptions, ringOptions, radarOptions, barOptions, lineOptions } from './data'
+import { type FC, useState } from 'react';
+import { Row, Col, Space } from 'antd';
+import CountUpCard from './components/CountUpCard';
+import ChartsCard from './components/ChartsCard';
+import { countUpData, pieOptions, ringOptions, radarOptions, barOptions, lineOptions } from './data';
 
 const HomePage: FC = () => {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
 
   setTimeout(() => {
-    setIsLoading(false)
-  }, 1500)
+    setIsLoading(false);
+  }, 1500);
 
   return (
     <Space direction='vertical' size={12} style={{ display: 'flex' }}>
@@ -25,7 +25,7 @@ const HomePage: FC = () => {
                 countNum={item.count}
               />
             </Col>
-          )
+          );
         })}
       </Row>
       <Row gutter={12}>
@@ -48,7 +48,7 @@ const HomePage: FC = () => {
         </Col>
       </Row>
     </Space>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

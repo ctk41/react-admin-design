@@ -1,39 +1,39 @@
-import type { styleState } from '@/types'
+import type { styleState } from '@/types';
 
 interface BaseElementState {
-  x: number
-  y: number
-  z: number
-  w: number
-  h: number
-  type: 'text' | 'image'
-  tag: string
-  active: boolean
+  x: number;
+  y: number;
+  z: number;
+  w: number;
+  h: number;
+  type: 'text' | 'image';
+  tag: string;
+  active: boolean;
 }
 
 export interface TextElementState extends BaseElementState {
-  type: 'text'
-  text: string
-  style: styleState
+  type: 'text';
+  text: string;
+  style: styleState;
 }
 
 export interface ImageElementState extends BaseElementState {
-  type: 'image'
-  url: string
+  type: 'image';
+  url: string;
 }
 
-export type ElementState = TextElementState | ImageElementState
+export type ElementState = TextElementState | ImageElementState;
 
 export interface ContainerState {
-  width: number
-  height: number
-  bgImgUrl: string
+  width: number;
+  height: number;
+  bgImgUrl: string;
 }
 
 export interface ImageObjState {
-  url: string
-  width: number
-  height: number
+  url: string;
+  width: number;
+  height: number;
 }
 
-export type handlerType = 'n' | 'e' | 's' | 'w' | 'nw' | 'ne' | 'se' | 'sw'
+export type handlerType = 'n' | 'e' | 's' | 'w' | 'nw' | 'ne' | 'se' | 'sw';

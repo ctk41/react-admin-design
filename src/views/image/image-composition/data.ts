@@ -1,5 +1,5 @@
-import type { ImageElementState, TextElementState, ContainerState } from './types'
-import { COMPOSITION_IMG_SRC, COMPOSITION_IMG_SRC2 } from '@/settings/websiteSetting'
+import type { ImageElementState, TextElementState, ContainerState } from './types';
+import { COMPOSITION_IMG_SRC, COMPOSITION_IMG_SRC2 } from '@/settings/websiteSetting';
 
 export const textElement: TextElementState = {
   x: 300,
@@ -20,9 +20,9 @@ export const textElement: TextElementState = {
     fontWeight: '',
     fontStyle: '',
     textShadow: '',
-    textAlign: 'left'
-  }
-}
+    textAlign: 'left',
+  },
+};
 
 export const imageElement: ImageElementState = {
   x: 320,
@@ -33,11 +33,11 @@ export const imageElement: ImageElementState = {
   type: 'image',
   tag: 'image_2',
   active: false,
-  url: COMPOSITION_IMG_SRC2
-}
+  url: COMPOSITION_IMG_SRC2,
+};
 
 export const containerObj: ContainerState = {
   width: 850,
   height: 530,
-  bgImgUrl: COMPOSITION_IMG_SRC
-}
+  bgImgUrl: COMPOSITION_IMG_SRC,
+};

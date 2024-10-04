@@ -1,32 +1,32 @@
-import type { ConfigEnv, UserConfig } from 'vite'
-import { loadEnv } from 'vite'
-import react from '@vitejs/plugin-react'
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
-import { viteMockServe } from 'vite-plugin-mock'
-import { wrapperEnv } from './build/utils'
-import { resolve } from 'path'
+import type { ConfigEnv, UserConfig } from 'vite';
+import { loadEnv } from 'vite';
+import react from '@vitejs/plugin-react';
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
+import { viteMockServe } from 'vite-plugin-mock';
+import { wrapperEnv } from './build/utils';
+import { resolve } from 'path';
 
 export default ({ command, mode }: ConfigEnv): UserConfig => {
-  const root = process.cwd()
-  const isBuild = command === 'build'
+  const root = process.cwd();
+  const isBuild = command === 'build';
 
-  const env = loadEnv(mode, root)
+  const env = loadEnv(mode, root);
 
-  const viteEnv: any = wrapperEnv(env)
-  const { VITE_PORT, VITE_DROP_CONSOLE } = viteEnv
+  const viteEnv: any = wrapperEnv(env);
+  const { VITE_PORT, VITE_DROP_CONSOLE } = viteEnv;
 
   return {
     base: './',
     server: {
       host: true,
       open: true,
-      port: VITE_PORT
+      port: VITE_PORT,
     },
     plugins: [
       react(),
       createSvgIconsPlugin({
         iconDirs: [resolve(process.cwd(), 'src/assets/icons')],
-        symbolId: 'icon-[dir]-[name]'
+        symbolId: 'icon-[dir]-[name]',
       }),
       viteMockServe({
         mockPath: 'mock',
@@ -36,8 +36,8 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
         injectCode: `
           import { setupProdMockServer } from 'mock/_createProductionServer';
           setupProdMockServer()
-          `
-      })
+          `,
+      }),
     ],
     build: {
       target: 'es2015',
@@ -46,15 +46,15 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       terserOptions: {
         compress: {
           keep_infinity: true,
-          drop_console: VITE_DROP_CONSOLE
-        }
+          drop_console: VITE_DROP_CONSOLE,
+        },
       },
-      chunkSizeWarningLimit: 2000
+      chunkSizeWarningLimit: 2000,
     },
     resolve: {
       alias: {
-        '@': resolve(__dirname, './src')
-      }
-    }
-  }
-}
+        '@': resolve(__dirname, './src'),
+      },
+    },
+  };
+};

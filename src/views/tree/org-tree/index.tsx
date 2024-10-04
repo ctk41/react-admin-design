@@ -1,21 +1,21 @@
-import { type FC, useState } from 'react'
-import { Card, Form, Radio, Switch } from 'antd'
-import { PageWrapper } from '@/components/Page'
-import { React_TREE_ORG_PLUGIN } from '@/settings/websiteSetting'
-import OrgTree from 'react-org-tree'
-import { data } from './data'
+import { type FC, useState } from 'react';
+import { Card, Form, Radio, Switch } from 'antd';
+import { PageWrapper } from '@/components/Page';
+import { React_TREE_ORG_PLUGIN } from '@/settings/websiteSetting';
+import OrgTree from 'react-org-tree';
+import { data } from './data';
 
 const OrgTreePage: FC = () => {
-  const [form] = Form.useForm()
+  const [form] = Form.useForm();
 
   const [config, setConfig] = useState({
     horizontal: false,
-    expandAll: true
-  })
+    expandAll: true,
+  });
 
   const onValuesChange = (values: any) => {
-    setConfig({ ...config, ...values })
-  }
+    setConfig({ ...config, ...values });
+  };
 
   return (
     <PageWrapper plugin={React_TREE_ORG_PLUGIN}>
@@ -42,7 +42,7 @@ const OrgTreePage: FC = () => {
         </div>
       </Card>
     </PageWrapper>
-  )
-}
+  );
+};
 
-export default OrgTreePage
+export default OrgTreePage;

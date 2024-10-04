@@ -1,29 +1,29 @@
-import type { FC, CSSProperties } from 'react'
+import type { FC, CSSProperties } from 'react';
 import type {
   TextElementState,
   ImageElementState,
   ElementState,
   ContainerState,
   ImageObjState,
-  handlerType
-} from './types'
-import { useState, useMemo } from 'react'
-import { useImmer } from 'use-immer'
-import { Row, Col, Card, Button, Form, message } from 'antd'
-import { RndNode } from '@/components/DndNode'
-import { PageWrapper } from '@/components/Page'
-import { IMAGE_COMPOSITION } from '@/settings/websiteSetting'
-import { RichTextInput, RichTextSetting } from '@/components/RichText'
-import { UploadImage } from '@/components/Upload'
-import { getImageSize, calcImageSize } from '@/utils/image'
-import { textElement, imageElement, containerObj } from './data'
-import dom2image from 'dom-to-image'
+  handlerType,
+} from './types';
+import { useState, useMemo } from 'react';
+import { useImmer } from 'use-immer';
+import { Row, Col, Card, Button, Form, message } from 'antd';
+import { RndNode } from '@/components/DndNode';
+import { PageWrapper } from '@/components/Page';
+import { IMAGE_COMPOSITION } from '@/settings/websiteSetting';
+import { RichTextInput, RichTextSetting } from '@/components/RichText';
+import { UploadImage } from '@/components/Upload';
+import { getImageSize, calcImageSize } from '@/utils/image';
+import { textElement, imageElement, containerObj } from './data';
+import dom2image from 'dom-to-image';
 
 const ImageComposition: FC = () => {
-  const [container, setContainer] = useImmer<ContainerState>(containerObj)
-  const [elements, setElements] = useImmer<Array<ElementState>>([textElement, imageElement])
-  const [activeElementTag, setActiveElementTag] = useState<string>(elements[0]?.tag || '')
-  const [elementIndex, setElementIndex] = useState<number>(elements.length)
+  const [container, setContainer] = useImmer<ContainerState>(containerObj);
+  const [elements, setElements] = useImmer<Array<ElementState>>([textElement, imageElement]);
+  const [activeElementTag, setActiveElementTag] = useState<string>(elements[0]?.tag || '');
+  const [elementIndex, setElementIndex] = useState<number>(elements.length);
 
   const containerStyle: CSSProperties = useMemo(() => {
     return {
@@ -33,23 +33,23 @@ const ImageComposition: FC = () => {
       backgroundImage: `url(${container.bgImgUrl})`,
       backgroundSize: 'contain',
       backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat'
-    }
-  }, [container])
+      backgroundRepeat: 'no-repeat',
+    };
+  }, [container]);
 
   const activeElement = useMemo(() => {
-    return elements.find(item => item.tag === activeElementTag)
-  }, [activeElementTag, elements])
+    return elements.find(item => item.tag === activeElementTag);
+  }, [activeElementTag, elements]);
 
   const elementHandler = (type: 'text' | 'image'): handlerType[] => {
     if (type === 'text') {
-      return ['e', 'w']
+      return ['e', 'w'];
     }
-    return ['n', 'e', 's', 'w', 'ne', 'nw', 'se', 'sw']
-  }
+    return ['n', 'e', 's', 'w', 'ne', 'nw', 'se', 'sw'];
+  };
 
   const handleAddText = () => {
-    const tagIndex = elementIndex + 1
+    const tagIndex = elementIndex + 1;
 
     const textElement: TextElementState = {
       x: 300,
@@ -70,22 +70,22 @@ const ImageComposition: FC = () => {
         fontWeight: '',
         fontStyle: '',
         textShadow: '',
-        textAlign: 'left'
-      }
-    }
+        textAlign: 'left',
+      },
+    };
     if (elements.length > 4) {
-      message.warning('图片上最多叠加5个元素!')
-      return
+      message.warning('图片上最多叠加5个元素!');
+      return;
     } else {
       setElements(draft => {
-        draft.push(textElement)
-      })
-      setElementIndex(tagIndex)
+        draft.push(textElement);
+      });
+      setElementIndex(tagIndex);
     }
-  }
+  };
 
   const handleAddImage = (imgObj: ImageObjState) => {
-    const tagIndex = elementIndex + 1
+    const tagIndex = elementIndex + 1;
 
     const imageElement: ImageElementState = {
       x: 320,
@@ -96,42 +96,42 @@ const ImageComposition: FC = () => {
       type: 'image',
       tag: `image_${tagIndex}`,
       active: false,
-      url: imgObj.url
-    }
+      url: imgObj.url,
+    };
     if (elements.length > 4) {
-      message.warning('图片上最多叠加5个元素!')
-      return
+      message.warning('图片上最多叠加5个元素!');
+      return;
     } else {
       setElements(draft => {
-        draft.push(imageElement)
-      })
-      setElementIndex(tagIndex)
+        draft.push(imageElement);
+      });
+      setElementIndex(tagIndex);
     }
-  }
+  };
 
   const handleDeleteElement = () => {
     if (!activeElementTag) {
-      message.warning('请先选择元素!')
-      return
+      message.warning('请先选择元素!');
+      return;
     }
-    const activeElementIndex = elements.findIndex(item => item.tag === activeElementTag)
+    const activeElementIndex = elements.findIndex(item => item.tag === activeElementTag);
     setElements(draft => {
-      draft.splice(activeElementIndex, 1)
-    })
-    setActiveElementTag('')
-  }
+      draft.splice(activeElementIndex, 1);
+    });
+    setActiveElementTag('');
+  };
 
   const changeBgImg = (url: string) => {
     getImageSize(url).then(({ width, height }) => {
-      const { width: containerWidth, height: containerHeight } = calcImageSize(width, height, 850, 550)
+      const { width: containerWidth, height: containerHeight } = calcImageSize(width, height, 850, 550);
 
       setContainer(draft => {
-        draft.bgImgUrl = url
-        draft.width = containerWidth
-        draft.height = containerHeight
-      })
-    })
-  }
+        draft.bgImgUrl = url;
+        draft.width = containerWidth;
+        draft.height = containerHeight;
+      });
+    });
+  };
 
   const uploadImage = (url: string) => {
     getImageSize(url).then(({ width, height }) => {
@@ -139,61 +139,61 @@ const ImageComposition: FC = () => {
         width,
         height,
         Math.floor(container.width / 4),
-        Math.floor(container.height / 4)
-      )
+        Math.floor(container.height / 4),
+      );
 
       handleAddImage({
         url,
         width: imgWidth,
-        height: imgHeight
-      })
-    })
-  }
+        height: imgHeight,
+      });
+    });
+  };
 
   const handleSettingText = (val: string) => {
     setElements((draft: any) => {
       draft.forEach((item: any) => {
         if (item.tag === activeElementTag) {
-          item.text = val
+          item.text = val;
         }
-      })
-    })
-  }
+      });
+    });
+  };
 
   const handleSettingStyles = (style: any) => {
     setElements((draft: any) => {
       draft.forEach((item: any) => {
         if (item.tag === activeElementTag) {
-          item.style = style
+          item.style = style;
         }
-      })
-    })
-  }
+      });
+    });
+  };
 
   const handleChangeElement = (ele: any, index: number) => {
     setElements((draft: any) => {
-      draft[index] = ele
-    })
+      draft[index] = ele;
+    });
     if (ele.active) {
-      setActiveElementTag(ele.tag)
+      setActiveElementTag(ele.tag);
       setElements((draft: any) => {
         draft.forEach((item: any) => {
           if (item.tag !== ele.tag) {
-            item.active = false
+            item.active = false;
           }
-        })
-      })
+        });
+      });
     }
-  }
+  };
 
   const handleComposition = async () => {
     dom2image.toPng(document.getElementById('imageComposition')!).then(dataUrl => {
-      const a = document.createElement('a')
-      a.href = dataUrl
-      a.download = `composition-image.png`
-      a.click()
-    })
-  }
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      a.download = `composition-image.png`;
+      a.click();
+    });
+  };
 
   return (
     <PageWrapper plugin={IMAGE_COMPOSITION}>
@@ -216,8 +216,8 @@ const ImageComposition: FC = () => {
                           style={item.style}
                           onChange={val => {
                             setElements((draft: any) => {
-                              draft[index].text = val
-                            })
+                              draft[index].text = val;
+                            });
                           }}
                         />
                       ) : item.type === 'image' ? (
@@ -226,7 +226,7 @@ const ImageComposition: FC = () => {
                         <></>
                       )}
                     </RndNode>
-                  )
+                  );
                 })}
               </div>
             </div>
@@ -277,7 +277,7 @@ const ImageComposition: FC = () => {
         </Col>
       </Row>
     </PageWrapper>
-  )
-}
+  );
+};
 
-export default ImageComposition
+export default ImageComposition;
