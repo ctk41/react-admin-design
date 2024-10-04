@@ -1,7 +1,7 @@
-import type { RouteObject, AppMenu } from '../types';
-import { cloneDeep } from 'lodash-es';
-import { isUrl } from '@/utils/is';
 import { treeMap } from '@/utils/helper/treeHelper';
+import { isUrl } from '@/utils/is';
+import { cloneDeep } from 'lodash-es';
+import type { AppMenu, RouteObject } from '../types';
 
 export function joinParentPath(menus: AppMenu[], parentPath = '') {
   for (let index = 0; index < menus.length; index++) {
@@ -50,7 +50,11 @@ export function genFullPath(routes: RouteObject[], parentPath = '') {
   for (let index = 0; index < routes.length; index++) {
     const route = routes[index];
 
-    if (route.path!.startsWith('/')) {
+    if (!route) {
+      break;
+    }
+
+    if (route?.path!.startsWith('/')) {
       route.fullPath = route.path;
     } else {
       route.fullPath = `${parentPath}/${route.path}`;
