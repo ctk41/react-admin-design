@@ -1,52 +1,52 @@
-import type { FC } from 'react'
-import type { MenuProps } from 'antd'
-import type { styleState } from '@/types'
-import { Form, Button, Space, Select, ColorPicker, Dropdown } from 'antd'
-import RichTextInput from './RichTextInput'
-import SvgIcon from '@/components/SvgIcon'
+import type { FC } from 'react';
+import type { MenuProps } from 'antd';
+import type { styleState } from '@/types';
+import { Form, Button, Space, Select, ColorPicker, Dropdown } from 'antd';
+import RichTextInput from './RichTextInput';
+import SvgIcon from '@/components/SvgIcon';
 
 interface textState {
-  textValue: string
-  textStyles?: styleState
-  onChangeValue: (val: string) => void
-  onChangeStyles?: (style: styleState) => void
+  textValue: string;
+  textStyles?: styleState;
+  onChangeValue: (val: string) => void;
+  onChangeStyles?: (style: styleState) => void;
 }
 
 const alignItems: MenuProps['items'] = [
   {
     key: 'left',
-    label: '左对齐'
+    label: '左对齐',
   },
   {
     key: 'center',
-    label: '居中'
+    label: '居中',
   },
   {
     key: 'right',
-    label: '右对齐'
-  }
-]
+    label: '右对齐',
+  },
+];
 
 const RichTextSetting: FC<textState> = ({ textValue, textStyles = {}, onChangeValue, onChangeStyles }) => {
   const handleTextAlign: MenuProps['onClick'] = ({ key }) => {
-    onChangeStyles?.({ ...textStyles, textAlign: key })
-  }
+    onChangeStyles?.({ ...textStyles, textAlign: key });
+  };
 
   const handleChangeStyle = (type: 'fontWeight' | 'fontStyle' | 'textShadow', val: string) => {
-    let styleVal = ''
+    let styleVal = '';
     switch (type) {
       case 'fontWeight':
-        styleVal = val ? '' : 'bold'
-        break
+        styleVal = val ? '' : 'bold';
+        break;
       case 'fontStyle':
-        styleVal = val ? '' : 'italic'
-        break
+        styleVal = val ? '' : 'italic';
+        break;
       case 'textShadow':
-        styleVal = val ? '' : '1px 1px 1px #333'
-        break
+        styleVal = val ? '' : '1px 1px 1px #333';
+        break;
     }
-    onChangeStyles?.({ ...textStyles, [type]: styleVal ? styleVal : '' })
-  }
+    onChangeStyles?.({ ...textStyles, [type]: styleVal ? styleVal : '' });
+  };
 
   return (
     <Form
@@ -69,7 +69,7 @@ const RichTextSetting: FC<textState> = ({ textValue, textStyles = {}, onChangeVa
               <Select.Option value={item} key={item} style={{ fontFamily: item }}>
                 {item}
               </Select.Option>
-            )
+            );
           })}
         </Select>
       </Form.Item>
@@ -83,7 +83,7 @@ const RichTextSetting: FC<textState> = ({ textValue, textStyles = {}, onChangeVa
               <Select.Option value={item + 'px'} key={item} style={{ fontSize: item + 'px' }}>
                 {item + 'px'}
               </Select.Option>
-            )
+            );
           })}
         </Select>
       </Form.Item>
@@ -120,7 +120,7 @@ const RichTextSetting: FC<textState> = ({ textValue, textStyles = {}, onChangeVa
         </Space>
       </Form.Item>
     </Form>
-  )
-}
+  );
+};
 
-export default RichTextSetting
+export default RichTextSetting;

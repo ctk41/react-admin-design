@@ -1,11 +1,11 @@
-import type { RouteObject } from './types';
-import { Navigate, createHashRouter, redirect } from 'react-router-dom';
-import { genFullPath } from './helpers';
+import { TOKEN_KEY } from '@/enums/cacheEnum';
 import { ExceptionEnum } from '@/enums/exceptionEnum';
 import { getAuthCache } from '@/utils/auth';
-import { TOKEN_KEY } from '@/enums/cacheEnum';
-import LoginPage from '@/views/login';
 import PageException from '@/views/exception';
+import LoginPage from '@/views/login';
+import { Navigate, createBrowserRouter, redirect } from 'react-router-dom';
+import { genFullPath } from './helpers';
+import type { RouteObject } from './types';
 
 const metaRoutes = import.meta.glob('./routes/*.tsx', { eager: true }) as Recordable;
 
@@ -61,4 +61,4 @@ const rootRoutes: RouteObject[] = [
 
 export { routeList as basicRoutes };
 
-export default createHashRouter(rootRoutes);
+export default createBrowserRouter(rootRoutes);

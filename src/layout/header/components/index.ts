@@ -1,4 +1,4 @@
-import FoldTrigger from './FoldTrigger'
-import Breadcrumb from './Breadcrumb'
+import FoldTrigger from './FoldTrigger';
+import Breadcrumb from './Breadcrumb';
 
-export { FoldTrigger, Breadcrumb }
+export { FoldTrigger, Breadcrumb };

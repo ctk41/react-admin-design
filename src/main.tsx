@@ -5,7 +5,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './stores';
 import App from './App';
 import '@/design/index.less';
-
 import 'virtual:svg-icons-register';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

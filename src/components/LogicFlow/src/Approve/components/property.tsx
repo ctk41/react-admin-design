@@ -1,38 +1,38 @@
-import { Form, Select, Input, Button } from 'antd'
-import { DownOutlined } from '@ant-design/icons'
-import { approveUser } from '../config'
-import type { IApproveUser } from '../type'
+import { Form, Select, Input, Button } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
+import { approveUser } from '../config';
+import type { IApproveUser } from '../type';
 
 // @ts-ignore
 export default function PropertyPanel(nodeData, updateproperty, hidePropertyPanel) {
   const getApproveList = () => {
-    const approveUserOption: JSX.Element[] = []
+    const approveUserOption: JSX.Element[] = [];
     approveUser.forEach((item: IApproveUser) => {
-      approveUserOption.push(<Select.Option value={item.value}>{item.label}</Select.Option>)
-    })
+      approveUserOption.push(<Select.Option value={item.value}>{item.label}</Select.Option>);
+    });
     const approveSelect = (
       <Form.Item className='form-property' label='审核节点类型' name='approveType'>
         <Select>{approveUserOption}</Select>
       </Form.Item>
-    )
-    return approveSelect
-  }
+    );
+    return approveSelect;
+  };
   const getApiUrl = () => {
     const Api = (
       <Form.Item label='API' name='api'>
         <Input />
       </Form.Item>
-    )
-    return Api
-  }
+    );
+    return Api;
+  };
   const onFormLayoutChange = (value: any, _all: any) => {
     approveUser.forEach(item => {
       if (item.value === value.approveType) {
-        value['approveTypeLabel'] = item.label
+        value['approveTypeLabel'] = item.label;
       }
-    })
-    updateproperty(nodeData.id, value)
-  }
+    });
+    updateproperty(nodeData.id, value);
+  };
   return (
     <div>
       <h2>属性面板</h2>
@@ -61,5 +61,5 @@ export default function PropertyPanel(nodeData, updateproperty, hidePropertyPane
         </Button>
       </div>
     </div>
-  )
+  );
 }

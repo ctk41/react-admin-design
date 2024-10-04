@@ -1,4 +1,4 @@
-import Approve from './src/Approve'
-import Bpmn from './src/Bpmn'
+import Approve from './src/Approve';
+import Bpmn from './src/Bpmn';
 
-export { Approve, Bpmn }
+export { Approve, Bpmn };

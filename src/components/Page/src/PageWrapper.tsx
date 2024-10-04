@@ -1,22 +1,22 @@
-import { Button } from 'antd'
-import { openWindow } from '@/utils'
-import SvgIcon from '@/components/SvgIcon'
-import compoStyle from './compo.module.less'
+import { Button } from 'antd';
+import { openWindow } from '@/utils';
+import SvgIcon from '@/components/SvgIcon';
+import compoStyle from './compo.module.less';
 
 interface PluginProp {
-  name?: string
-  desc?: string
-  url?: string
+  name?: string;
+  desc?: string;
+  url?: string;
 }
 
 interface PageProp {
-  plugin: PluginProp
-  children: JSX.Element
+  plugin: PluginProp;
+  children: JSX.Element;
 }
 
 const PageWrapper = (props: PageProp) => {
   function openGithub() {
-    openWindow(props.plugin?.url!)
+    openWindow(props.plugin?.url!);
   }
 
   return (
@@ -36,7 +36,7 @@ const PageWrapper = (props: PageProp) => {
       </div>
       <div className={compoStyle['page-content']}>{props.children}</div>
     </div>
-  )
-}
+  );
+};
 
-export default PageWrapper
+export default PageWrapper;

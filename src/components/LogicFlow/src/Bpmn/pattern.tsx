@@ -1,50 +1,50 @@
-import type { ReactElement } from 'react'
-import type LogicFlow from '@logicflow/core'
+import type { ReactElement } from 'react';
+import type LogicFlow from '@logicflow/core';
 
 type IProps = {
-  lf: LogicFlow
-}
+  lf: LogicFlow;
+};
 
 export default function BpmnPattern(props: IProps): ReactElement {
-  const { lf } = props
+  const { lf } = props;
   function addStartNode() {
     lf.dnd.startDrag({
       type: 'bpmn:startEvent',
-      text: '开始'
-    })
+      text: '开始',
+    });
   }
   function addUserTask() {
     lf.dnd.startDrag({
-      type: 'bpmn:userTask'
-    })
+      type: 'bpmn:userTask',
+    });
   }
   function addServiceTask() {
     lf.dnd.startDrag({
-      type: 'bpmn:serviceTask'
-    })
+      type: 'bpmn:serviceTask',
+    });
   }
   function addGateWay() {
     lf.dnd.startDrag({
-      type: 'bpmn:exclusiveGateway'
-    })
+      type: 'bpmn:exclusiveGateway',
+    });
   }
   function addEndNode() {
     lf.dnd.startDrag({
       type: 'bpmn:endEvent',
-      text: '结束'
-    })
+      text: '结束',
+    });
   }
   function openSelection() {
     lf.updateEditConfig({
-      stopMoveGraph: true
-    })
+      stopMoveGraph: true,
+    });
   }
   lf &&
     lf.on('selection:selected', () => {
       lf.updateEditConfig({
-        stopMoveGraph: false
-      })
-    })
+        stopMoveGraph: false,
+      });
+    });
   return (
     <div className='pattern'>
       <div className='pattern-selection' onMouseDown={() => openSelection()} />
@@ -60,5 +60,5 @@ export default function BpmnPattern(props: IProps): ReactElement {
       <div className='pattern-end' onMouseDown={() => addEndNode()}></div>
       <div>结束</div>
     </div>
-  )
+  );
 }

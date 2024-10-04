@@ -1,5 +1,5 @@
-import { Tooltip } from 'antd'
-import SvgIcon from '@/components/SvgIcon'
+import { Tooltip } from 'antd';
+import SvgIcon from '@/components/SvgIcon';
 
 export default function DocLink() {
   return (
@@ -8,5 +8,5 @@ export default function DocLink() {
         <SvgIcon name='document' size={20} />
       </span>
     </Tooltip>
-  )
+  );
 }

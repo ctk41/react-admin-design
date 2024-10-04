@@ -1,39 +1,47 @@
-import type { BaseNodeModel, ConnectRule } from '@logicflow/core'
-import type LogicFlow from '@logicflow/core'
-import { CircleNodeModel, CircleNode, h, RectNode, RectNodeModel, PolygonNode, PolygonNodeModel } from '@logicflow/core'
-import type GraphModel from '@logicflow/core/types/model/GraphModel'
-import type { nodeProperty } from '../type'
+import type { BaseNodeModel, ConnectRule } from '@logicflow/core';
+import type LogicFlow from '@logicflow/core';
+import {
+  CircleNodeModel,
+  CircleNode,
+  h,
+  RectNode,
+  RectNodeModel,
+  PolygonNode,
+  PolygonNodeModel,
+} from '@logicflow/core';
+import type GraphModel from '@logicflow/core/types/model/GraphModel';
+import type { nodeProperty } from '../type';
 
 export default function RegisteNode(lf: LogicFlow) {
   class ApplyNodeModel extends CircleNodeModel {
     getConnectedTargetRules(): ConnectRule[] {
-      const rules = super.getConnectedTargetRules()
+      const rules = super.getConnectedTargetRules();
       const geteWayOnlyAsTarget = {
         message: '开始节点只能连出，不能连入！',
         validate: (source: BaseNodeModel, target: BaseNodeModel) => {
-          let isValid = true
+          let isValid = true;
           if (target) {
-            isValid = false
+            isValid = false;
           }
-          return isValid
-        }
-      }
+          return isValid;
+        },
+      };
       // @ts-ignore
-      rules.push(geteWayOnlyAsTarget)
-      return rules
+      rules.push(geteWayOnlyAsTarget);
+      return rules;
     }
   }
   lf.register({
     type: 'apply',
     view: CircleNode,
-    model: ApplyNodeModel
-  })
+    model: ApplyNodeModel,
+  });
 
   class ApproverNode extends RectNode {
-    static extendKey = 'UserTaskNode'
+    static extendKey = 'UserTaskNode';
     getLabelShape() {
-      const { x, y, width, height, properties } = this.props.model
-      const { labelColor, approveTypeLabel } = properties as nodeProperty
+      const { x, y, width, height, properties } = this.props.model;
+      const { labelColor, approveTypeLabel } = properties as nodeProperty;
       return h(
         'text',
         {
@@ -42,14 +50,14 @@ export default function RegisteNode(lf: LogicFlow) {
           x: x - width / 2 + 5,
           y: y - height / 2 + 15,
           width: 50,
-          height: 25
+          height: 25,
         },
-        approveTypeLabel
-      )
+        approveTypeLabel,
+      );
     }
     getShape() {
-      const { x, y, width, height, radius } = this.props.model
-      const style = this.props.model.getNodeStyle()
+      const { x, y, width, height, radius } = this.props.model;
+      const style = this.props.model.getNodeStyle();
       return h('g', {}, [
         h('rect', {
           ...style,
@@ -58,70 +66,70 @@ export default function RegisteNode(lf: LogicFlow) {
           rx: radius,
           ry: radius,
           width,
-          height
+          height,
         }),
-        this.getLabelShape()
-      ])
+        this.getLabelShape(),
+      ]);
     }
   }
   class ApproverModel extends RectNodeModel {
     constructor(data: any, graphModel: GraphModel) {
-      super(data, graphModel)
+      super(data, graphModel);
       this.properties = {
         labelColor: '#000000',
         approveTypeLabel: '',
-        approveType: ''
-      }
+        approveType: '',
+      };
     }
   }
 
   lf.register({
     type: 'approver',
     view: ApproverNode,
-    model: ApproverModel
-  })
+    model: ApproverModel,
+  });
 
   class JugementModel extends PolygonNodeModel {
     constructor(data: any, graphModel: GraphModel) {
-      super(data, graphModel)
+      super(data, graphModel);
       this.points = [
         [35, 0],
         [70, 35],
         [35, 70],
-        [0, 35]
-      ]
+        [0, 35],
+      ];
       this.properties = {
-        api: ''
-      }
+        api: '',
+      };
     }
   }
   lf.register({
     type: 'jugement',
     view: PolygonNode,
-    model: JugementModel
-  })
+    model: JugementModel,
+  });
 
   class FinshNodeModel extends CircleNodeModel {
     getConnectedSourceRules(): ConnectRule[] {
-      const rules = super.getConnectedSourceRules()
+      const rules = super.getConnectedSourceRules();
       const geteWayOnlyAsTarget = {
         message: '结束节点只能连入，不能连出！',
         validate: (source: BaseNodeModel) => {
-          let isValid = true
+          let isValid = true;
           if (source) {
-            isValid = false
+            isValid = false;
           }
-          return isValid
-        }
-      }
+          return isValid;
+        },
+      };
       // @ts-ignore
-      rules.push(geteWayOnlyAsTarget)
-      return rules
+      rules.push(geteWayOnlyAsTarget);
+      return rules;
     }
   }
   lf.register({
     type: 'finsh',
     view: CircleNode,
-    model: FinshNodeModel
-  })
+    model: FinshNodeModel,
+  });
 }

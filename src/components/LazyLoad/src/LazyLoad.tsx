@@ -1,6 +1,6 @@
-import type { LoadableComponent } from '@loadable/component'
-import { type ReactNode, Suspense } from 'react'
-import { Spin } from 'antd'
+import type { LoadableComponent } from '@loadable/component';
+import { type ReactNode, Suspense } from 'react';
+import { Spin } from 'antd';
 
 /**
  * @description 路由懒加载
@@ -17,14 +17,14 @@ const LazyLoad = (Component: LoadableComponent<any>): ReactNode => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            height: '100%'
+            height: '100%',
           }}
         />
       }
     >
       <Component />
     </Suspense>
-  )
-}
+  );
+};
 
-export default LazyLoad
+export default LazyLoad;
