@@ -1,11 +1,11 @@
-import React, { useRef, useState } from 'react';
-import { Row, Col, Card, Button, Space } from 'antd';
 import { PageWrapper } from '@/components/Page';
-import { REACT_CROPPER_PLUGIN, CROPPER_IMG_SRC } from '@/settings/websiteSetting';
-import Cropper, { type ReactCropperElement } from 'react-cropper';
-import 'cropperjs/dist/cropper.css';
-import { downloadImgByUrl } from '@/utils/download';
 import { UploadImage } from '@/components/Upload';
+import { CROPPER_IMG_SRC, REACT_CROPPER_PLUGIN } from '@/settings/websiteSetting';
+import { downloadImgByUrl } from '@/utils/download';
+import { Button, Card, Col, Row, Space } from 'antd';
+import 'cropperjs/dist/cropper.css';
+import React, { useRef, useState } from 'react';
+import Cropper, { type ReactCropperElement } from 'react-cropper';
 
 const ImageCropper: React.FC = () => {
   const cropperRef = useRef<ReactCropperElement>(null);
@@ -27,7 +27,7 @@ const ImageCropper: React.FC = () => {
     <PageWrapper plugin={REACT_CROPPER_PLUGIN}>
       <Row gutter={12}>
         <Col span={10}>
-          <Card title='裁剪区域' bordered={false} bodyStyle={{ height: '400px' }}>
+          <Card title='Crop Area' bordered={false} bodyStyle={{ height: '400px' }}>
             <Cropper
               ref={cropperRef}
               src={imgSrc}
@@ -45,19 +45,19 @@ const ImageCropper: React.FC = () => {
           </Card>
         </Col>
         <Col span={4}>
-          <Card title='设置区域' bordered={false}>
+          <Card title='Settings Area' bordered={false}>
             <div className='flex-center' style={{ height: '352px' }}>
               <Space direction='vertical'>
                 <UploadImage onSuccess={handleSuccess} />
                 <Button type='primary' onClick={downloadImage}>
-                  下载图片
+                  Download Image
                 </Button>
               </Space>
             </div>
           </Card>
         </Col>
         <Col span={10}>
-          <Card title='预览区域' bordered={false} bodyStyle={{ height: '400px' }}>
+          <Card title='Preview Area' bordered={false} bodyStyle={{ height: '400px' }}>
             <div
               className='img-preview'
               style={{

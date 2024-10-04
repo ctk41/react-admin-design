@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
+import { PageWrapper } from '@/components/Page';
+import { TABLE_EDIT_COMPO } from '@/settings/websiteSetting';
 import {
-  Form,
   Button,
-  Table,
-  Select,
-  Switch,
-  InputNumber,
-  Input,
-  DatePicker,
-  Radio,
-  Checkbox,
   Card,
+  Checkbox,
+  DatePicker,
+  Form,
+  Input,
+  InputNumber,
   Popconfirm,
+  Radio,
+  Select,
   Space,
+  Switch,
+  Table,
 } from 'antd';
 import type { ColumnType } from 'antd/es/table';
-import { PageWrapper } from '@/components/Page';
 import dayjs from 'dayjs';
-import { TABLE_EDIT_COMPO } from '@/settings/websiteSetting';
+import React, { useState } from 'react';
 import { tableData, type DataItem } from './data';
 
 type CellType = 'number' | 'text' | 'radio' | 'date' | 'select' | 'checkbox' | 'switch';
@@ -34,14 +34,14 @@ interface EditableCellProps extends React.HTMLAttributes<HTMLElement> {
 
 type theadKey = Record<string, { title: string; type: string }>;
 const theadMap: theadKey = {
-  key: { title: '数字输入框', type: 'number' },
-  name: { title: '输入框', type: 'text' },
-  sex: { title: '单选框', type: 'radio' },
-  birth: { title: '日期选择框', type: 'date' },
-  education: { title: '选择器', type: 'select' },
-  hobby: { title: '多选框', type: 'checkbox' },
-  forbid: { title: '开关', type: 'switch' },
-  action: { title: '按钮', type: 'button' },
+  key: { title: 'Number Input', type: 'number' },
+  name: { title: 'Input', type: 'text' },
+  sex: { title: 'Radio', type: 'radio' },
+  birth: { title: 'Date Picker', type: 'date' },
+  education: { title: 'Select', type: 'select' },
+  hobby: { title: 'Checkbox', type: 'checkbox' },
+  forbid: { title: 'Switch', type: 'switch' },
+  action: { title: 'Button', type: 'button' },
 };
 
 const nodeType = (type: CellType, record: DataItem) => {
@@ -51,7 +51,7 @@ const nodeType = (type: CellType, record: DataItem) => {
     case 'text':
       return <Input />;
     case 'radio':
-      return <Radio.Group options={['男', '女'].map(item => ({ value: item, label: item }))} />;
+      return <Radio.Group options={['Male', 'Female'].map(item => ({ value: item, label: item }))} />;
     case 'date':
       return (
         <div>
@@ -60,7 +60,10 @@ const nodeType = (type: CellType, record: DataItem) => {
       );
     case 'select':
       return (
-        <Select options={['初中', '高中', '大专', '本科'].map(item => ({ value: item }))} style={{ width: '80px' }} />
+        <Select
+          options={['Junior High', 'High School', 'College', 'Bachelor'].map(item => ({ value: item }))}
+          style={{ width: '80px' }}
+        />
       );
     case 'checkbox':
       return <Checkbox.Group options={record.hobby.split('、')} defaultValue={record.hobby.split('、')} />;
@@ -139,8 +142,8 @@ const TableEditRow: React.FC = () => {
       title: () => {
         return (
           <>
-            <span>编号</span>
-            <p className='sub-title'>(数字输入框)</p>
+            <span>Number</span>
+            <p className='sub-title'>(Number Input)</p>
           </>
         );
       },
@@ -153,8 +156,8 @@ const TableEditRow: React.FC = () => {
       title: () => {
         return (
           <>
-            <span>姓名</span>
-            <p className='sub-title'>(输入框)</p>
+            <span>Name</span>
+            <p className='sub-title'>(Input)</p>
           </>
         );
       },
@@ -167,8 +170,8 @@ const TableEditRow: React.FC = () => {
       title: () => {
         return (
           <>
-            <span>性别</span>
-            <p className='sub-title'>(单选框)</p>
+            <span>Gender</span>
+            <p className='sub-title'>(Radio)</p>
           </>
         );
       },
@@ -181,8 +184,8 @@ const TableEditRow: React.FC = () => {
       title: () => {
         return (
           <>
-            <span>生日</span>
-            <p className='sub-title'>(日期选择器)</p>
+            <span>Birthday</span>
+            <p className='sub-title'>(Date Picker)</p>
           </>
         );
       },
@@ -195,8 +198,8 @@ const TableEditRow: React.FC = () => {
       title: () => {
         return (
           <>
-            <span>学历</span>
-            <p className='sub-title'>(选择器)</p>
+            <span>Education</span>
+            <p className='sub-title'>(Select)</p>
           </>
         );
       },
@@ -209,8 +212,8 @@ const TableEditRow: React.FC = () => {
       title: () => {
         return (
           <>
-            <span>爱好</span>
-            <p className='sub-title'>(多选框)</p>
+            <span>Hobbies</span>
+            <p className='sub-title'>(Checkbox)</p>
           </>
         );
       },
@@ -223,8 +226,8 @@ const TableEditRow: React.FC = () => {
       title: () => {
         return (
           <>
-            <span>禁止编辑</span>
-            <p className='sub-title'>(开关)</p>
+            <span>Editable Forbidden</span>
+            <p className='sub-title'>(Switch)</p>
           </>
         );
       },
@@ -233,15 +236,15 @@ const TableEditRow: React.FC = () => {
       editable: true,
       align: 'center',
       render: (text: string, record: DataItem) => {
-        return <span>{record.forbid ? '是' : '否'}</span>;
+        return <span>{record.forbid ? 'Yes' : 'No'}</span>;
       },
     },
     {
       title: () => {
         return (
           <>
-            <span>操作</span>
-            <p className='sub-title'>(按钮)</p>
+            <span>Action</span>
+            <p className='sub-title'>(Button)</p>
           </>
         );
       },
@@ -253,17 +256,17 @@ const TableEditRow: React.FC = () => {
         return editable ? (
           <Space>
             <Button type='primary' ghost onClick={() => save(record.key)}>
-              保存
+              Save
             </Button>
-            <Popconfirm title='是否取消编辑？' onConfirm={cancel}>
+            <Popconfirm title='Cancel editing?' onConfirm={cancel}>
               <Button type='primary' danger ghost>
-                取消
+                Cancel
               </Button>
             </Popconfirm>
           </Space>
         ) : (
           <Button disabled={editingKey !== ''} onClick={() => edit(record)}>
-            编辑
+            Edit
           </Button>
         );
       },
