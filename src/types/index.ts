@@ -15,7 +15,7 @@ export interface UserInfo {
 
 export type ThemeMode = 'dark' | 'light';
 
-export type LocaleType = 'zh_CN' | 'en';
+export type LocaleType = 'en';
 
 export interface styleState {
   fontFamily?: string;

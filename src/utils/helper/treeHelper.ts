@@ -12,7 +12,6 @@ const DEFAULT_CONFIG: TreeHelperConfig = {
 
 const getConfig = (config: Partial<TreeHelperConfig>) => Object.assign({}, DEFAULT_CONFIG, config);
 
-// tree from list
 export function listToTree<T = any>(list: any[], config: Partial<TreeHelperConfig> = {}): T[] {
   const conf = getConfig(config) as TreeHelperConfig;
   const nodeMap = new Map();
@@ -128,7 +127,6 @@ export function forEach<T = any>(tree: T[], func: (n: T) => any, config: Partial
   const list: any[] = [...tree];
   const { children } = config;
   for (let i = 0; i < list.length; i++) {
-    //func 返回true就终止遍历，避免大量节点场景下无意义循环，引起浏览器卡顿
     if (func(list[i])) {
       return;
     }
@@ -166,12 +164,6 @@ export function treeMapEach(data: any, { children = 'children', conversion }: { 
   }
 }
 
-/**
- * 递归遍历树结构
- * @param treeDatas 树
- * @param callBack 回调
- * @param parentNode 父节点
- */
 export function eachTree(treeDatas: any[], callBack: Fn, parentNode = {}) {
   treeDatas.forEach(element => {
     const newNode = callBack(element, parentNode) || element;

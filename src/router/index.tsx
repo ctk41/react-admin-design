@@ -29,7 +29,7 @@ const rootRoutes: RouteObject[] = [
     name: 'Login',
     element: <LoginPage />,
     meta: {
-      title: 'Login Page', // 登录页
+      title: 'Login Page',
       key: 'login',
     },
     loader: () => {

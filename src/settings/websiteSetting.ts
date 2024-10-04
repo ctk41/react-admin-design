@@ -3,69 +3,69 @@ export const GITHUB_URL = 'https://github.com/baimingxuan/vue3-admin-design';
 
 // Form component
 export const FORM_COMPO = {
-  name: 'Form表单',
+  name: 'Form',
   url: 'https://ant-design.antgroup.com/components/form-cn',
-  desc: 'ant-design-form: 使用 ant-design 的 form 组件, 可用以收集、校验和提交数据等操作。',
+  desc: 'ant-design-form: Uses the form component from Ant Design, useful for collecting, validating, and submitting data.',
 };
 
 // Form-create plugin
 export const FORM_CREATE_DESIGNER = {
-  name: 'Form表单设计器',
+  name: 'Form Designer',
   url: 'https://github.com/xaboy/form-create-designer/tree/next',
-  desc: 'form-create-designer: 一个通过拖拽的方式快速创建表单的设计器组件, 能提高开发者对表单的开发效率, 节省开发者的时间。',
+  desc: 'form-create-designer: A form designer component that allows for quickly creating forms via drag-and-drop, improving developer efficiency and saving time.',
 };
 
 // Table component
 export const TABLE_COMPO = {
-  name: 'Table表格',
+  name: 'Table',
   url: 'https://ant-design.antgroup.com/components/table-cn',
-  desc: 'ant-design-table: 使用 ant-design 的 table 组件, 可用于展示多条结构类似的数据, 并对其进行相关操作。',
+  desc: 'ant-design-table: Uses the table component from Ant Design, ideal for displaying structured data and performing related operations.',
 };
 
 // Table edit component
 export const TABLE_EDIT_COMPO = {
-  name: 'Table表格(可编辑行)',
+  name: 'Editable Table',
   url: 'https://ant-design.antgroup.com/components/table-cn',
-  desc: 'ant-design-table: 使用 ant-design 的 table 组件, 可用于展示多条结构类似的数据, 并对其进行行数据编辑操作。',
+  desc: 'ant-design-table: Uses the table component from Ant Design, suitable for displaying structured data and allowing row-level edits.',
 };
 
 // Tree component
 export const TREE_COMPO = {
-  name: 'Tree树形控件',
+  name: 'Tree',
   url: 'https://ant-design.antgroup.com/components/tree-cn',
-  desc: 'ant-design-tree: 基于Ant-Design的Tree组件, 可以完整展现其中的层级关系, 并具有展开收起选择等交互功能。',
+  desc: 'ant-design-tree: A Tree component from Ant Design that fully represents hierarchical relationships with features like expand, collapse, and select.',
 };
 
 // Transfer component
 export const TRANSFER_COMPO = {
-  name: 'Transfer穿梭框',
+  name: 'Transfer',
   url: 'https://ant-design.antgroup.com/components/transfer-cn',
-  desc: 'ant-design-transfer: 使用 ant-design 的 transfer 组件, 可用于对列表数据进行选中、取消等操作。',
+  desc: 'ant-design-transfer: Uses the transfer component from Ant Design, allowing selection and deselection of list data.',
 };
 
 // Upload component
 export const UPLOAD_COMPO = {
-  name: 'Upload图片上传组件',
+  name: 'Upload',
   url: 'https://ant-design.antgroup.com/components/upload-cn',
-  desc: 'ant-design-upload: 使用 ant-design 的 upload 组件, 并具有多种列表展示方式。',
+  desc: 'ant-design-upload: Uses the upload component from Ant Design with various display modes for lists.',
 };
 
-// 图片上传组件资源
+// Image upload component resources
 export const UPLOAD_IMG_SRC = 'https://cdn.jsdelivr.net/gh/baimingxuan/media-store/images/img04.jpg';
 export const UPLOAD_IMG_SRC2 = 'https://cdn.jsdelivr.net/gh/baimingxuan/media-store/images/img03.jpg';
 
 // Video player plugin
 export const VIDEO_PLUGIN = {
-  name: 'Video视频播放器',
+  name: 'Video Player',
   url: 'https://github.com/videojs/video.js',
-  desc: 'Video.JS: 一个为 HTML5 世界构建的web视频播放器, 适用于目前主流网络视频的播放。',
+  desc: 'Video.JS: A web video player built for the HTML5 world, suitable for modern web video playback.',
 };
 
 // Video watermark component
 export const VIDEO_WATERMARK = {
-  name: 'Video视频水印',
+  name: 'Video Watermark',
   url: 'https://github.com/bokuweb/react-rnd',
-  desc: '视频水印: 基于React-Rnd的拖拽功能, 在视频上通过叠加图片、文字等, 实现视频添加水印的功能。',
+  desc: 'Video Watermark: Based on React-Rnd drag-and-drop, allows for overlaying images or text on a video to add watermarks.',
 };
 
 // Video resource src
@@ -74,37 +74,37 @@ export const VIDEO_IMG_SRC = 'https://cdn.jsdelivr.net/gh/baimingxuan/media-stor
 
 // Xlsx plugin
 export const XLSX_PLUGIN = {
-  name: 'JS-xlsx插件',
+  name: 'JS-xlsx Plugin',
   url: 'https://github.com/SheetJS/sheetjs',
-  desc: 'JS-xlsx: 由SheetJS出品的一款非常方便的只需要纯JS即可读取和导出excel的工具库, 功能强大, 支持xlsx、csv、txt等格式。',
+  desc: 'JS-xlsx: A powerful JavaScript library from SheetJS for reading and exporting Excel files, supporting formats like xlsx, csv, and txt.',
 };
 
 // React-Sortable plugin
 export const SORTABLE_PLUGIN = {
-  name: 'Sortable拖拽列表',
+  name: 'Sortable List',
   url: 'https://github.com/SortableJS/react-sortablejs',
-  desc: 'ReactSortable: 基于Sortable.js的react组件, 用以实现拖拽功能。',
+  desc: 'ReactSortable: A react component based on Sortable.js that enables drag-and-drop functionality.',
 };
 
 // React-Rnd plugin
 export const REACT_RND_PLUGIN = {
-  name: 'React-Rnd拖拽组件',
+  name: 'React-Rnd Drag Component',
   url: 'https://github.com/bokuweb/react-rnd',
-  desc: 'React-Rnd: 一款可调整大小和可拖拽的React组件。',
+  desc: 'React-Rnd: A React component that allows resizing and dragging.',
 };
 
 // React-cropper plugin
 export const REACT_CROPPER_PLUGIN = {
-  name: 'React-Cropper图片裁剪',
+  name: 'React-Cropper Image Cropper',
   url: 'https://github.com/react-cropper/react-cropper',
-  desc: 'react-cropper: 一个优雅的图片裁剪插件, 可实现图片裁剪、图片生成等功能, 并支持生成png、jpeg、webp等图片格式。',
+  desc: 'react-cropper: An elegant image cropping plugin for React that allows for image cropping and generation, supporting png, jpeg, webp formats.',
 };
 
 // Image-composition component
 export const IMAGE_COMPOSITION = {
-  name: 'Image图片合成',
+  name: 'Image Composition',
   url: 'https://github.com/bokuweb/react-rnd',
-  desc: '图片合成: 基于React-Rnd的拖拽功能, 在其上通过叠加图片、文字等, 实现图片的叠加，并合成新图片的功能。',
+  desc: 'Image Composition: Based on React-Rnd drag-and-drop, allows overlaying images and text to create composite images.',
 };
 
 // Cropper image src
@@ -119,61 +119,63 @@ export const COMPOSITION_IMG_SRC2 = 'https://cdn.jsdelivr.net/gh/baimingxuan/med
 
 // Image-compress component
 export const IMAGE_COMPRESS = {
-  name: 'Image图片压缩',
+  name: 'Image Compression',
   url: 'https://github.com/baimingxuan/react-admin-design/main/src/views/image/image-compress.tsx',
-  desc: 'ImageCompress: 纯JS实现对图片的等比压缩和放大的功能, 并能对图片进行下载。',
+  desc: 'ImageCompress: A JavaScript-based tool for proportional image compression and resizing with the option to download the result.',
 };
 
 // Count-to plugin
 export const COUNTUP_PLUGIN = {
-  name: 'CountUp数字滚动',
+  name: 'CountUp Number Scrolling',
   url: 'https://github.com/glennreyes/react-countup',
-  desc: 'React-CountUp: 一个无依赖、轻量级的react数字滚动插件, 以更有趣的方式显示数字数据。',
+  desc: 'React-CountUp: A lightweight, dependency-free React plugin for animated number scrolling, great for displaying data in a fun way.',
 };
 
 // React-CodeMirror plugin
 export const CODEMIRROR_PLUGIN = {
-  name: 'CodeMirror代码编辑器',
+  name: 'CodeMirror Code Editor',
   url: 'https://github.com/uiwjs/react-codemirror',
-  desc: 'React-CodeMirror: 是一款基于 react 的代码编辑器, 可支持html、javascript、typescript等。',
+  desc: 'React-CodeMirror: A React-based code editor that supports HTML, JavaScript, TypeScript, and more.',
 };
 
 // Antv-g6 plugin
 export const ANTV_G6_PLUGIN = {
-  name: 'AntV-G6流程图',
+  name: 'AntV-G6 Flowchart',
   url: 'https://github.com/antvis/g6',
-  desc: 'antv-g6: 一个图可视化引擎。它提供了图的绘制、布局、分析、交互、动画等图可视化的基础能力。',
+  desc: 'antv-g6: A graph visualization engine that provides core capabilities for drawing, layout, analysis, interaction, and animation.',
 };
 
 // ReactTreeOrg plugin
 export const React_TREE_ORG_PLUGIN = {
-  name: 'Tree-Org树状组织图',
+  name: 'Tree-Org Organization Chart',
   url: 'https://github.com/artdong/react-org-tree',
-  desc: 'react-tree-org: 基于 react 的树结构组织图, 可用于公司组织架构展示。',
+  desc: 'react-tree-org: A React-based organizational tree chart, ideal for visualizing company structures.',
 };
 
 // WangEditor plugin
 export const WANG_EDITOR_PLUGIN = {
-  name: '富文本编辑器',
+  name: 'Rich Text Editor',
   url: 'https://github.com/wangeditor-team/wangEditor',
-  desc: 'wangEditor: 基于javascript和css开发的 Web富文本编辑器, 轻量、简洁、易用、开源免费。',
+  desc: 'wangEditor: A lightweight, simple, and easy-to-use web rich text editor based on JavaScript and CSS, open-source and free.',
 };
 
 // React-Markdown-Editor plugin
 export const MARKDOWN_EDITOR_PLUGIN = {
-  name: 'Markdown编辑器',
+  name: 'Markdown Editor',
   url: 'https://github.com/uiwjs/react-md-editor',
-  desc: 'React-Md-Editor: 是一款基于 react 的 Markdown 编辑器,比较适合博客系统。',
+  desc: 'React-Md-Editor: A React-based Markdown editor, suitable for blogging systems.',
 };
 
+// Flow Editor plugin
 export const FLOW_EDITOR_PLUGIN = {
-  name: '流程图编辑器',
+  name: 'Flowchart Editor',
   url: 'https://github.com/didi/LogicFlow',
-  desc: 'LogicFlow: 是一款流程图编辑框架，提供了一系列流程图交互、编辑所必需的功能和灵活的节点自定义、插件等拓展机制。',
+  desc: 'LogicFlow: A flowchart editing framework that provides necessary features for interaction and editing, with flexible node customization and plugins.',
 };
 
+// Result component
 export const RESULT_COMPO = {
-  name: 'Result结果',
+  name: 'Result Component',
   url: 'https://ant-design.antgroup.com/components/result-cn',
-  desc: 'ant-design-result: 使用 ant-design 的 result 组件, 可用于反馈一系列操作任务的处理结果。',
+  desc: 'ant-design-result: Uses the result component from Ant Design to display the result of various tasks and operations.',
 };

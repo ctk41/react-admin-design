@@ -1,15 +1,13 @@
-import type { InternalAxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
-import axios from 'axios';
+import { clearAuthCache, getToken } from '@/utils/auth';
 import { message } from 'antd';
-import { getToken, clearAuthCache } from '@/utils/auth';
+import type { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
+import axios from 'axios';
 
-// Create axios instance
 const service = axios.create({
   baseURL: '/api',
   timeout: 10 * 1000,
 });
 
-// Handle Error
 const handleError = (error: AxiosError): Promise<AxiosError> => {
   if (error.response?.status === 401 || error.response?.status === 504) {
     clearAuthCache();
@@ -19,7 +17,6 @@ const handleError = (error: AxiosError): Promise<AxiosError> => {
   return Promise.reject(error);
 };
 
-// Request interceptors configuration
 service.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   const token = getToken();
   if (token) {
@@ -29,7 +26,6 @@ service.interceptors.request.use((config: InternalAxiosRequestConfig) => {
   return config;
 }, handleError);
 
-// Respose interceptors configuration
 service.interceptors.response.use((response: AxiosResponse) => {
   const data = response.data;
 

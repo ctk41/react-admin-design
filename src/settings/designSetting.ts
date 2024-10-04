@@ -1,9 +1,7 @@
 import { AppModeEnum } from '@/enums/appEnum';
 
-// app mode
 export const baseAppMode = AppModeEnum.LIGHT;
 
-// app theme color
 export const APP_THEME_COLOR_LIST = [
   {
     name: '拂晓蓝',
