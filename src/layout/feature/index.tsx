@@ -1,5 +1,5 @@
 import { Divider } from 'antd';
-import { FullScreen, DocLink, GithubLink, UserDropdown } from './components';
+import { DocLink, FullScreen, GithubLink, UserDropdown } from './components';
 import moduleStyle from './index.module.less';
 
 export default function LayoutFeature() {

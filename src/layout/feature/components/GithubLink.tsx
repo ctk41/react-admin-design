@@ -1,6 +1,6 @@
-import { Tooltip } from 'antd';
-import { openWindow } from '@/utils';
 import SvgIcon from '@/components/SvgIcon';
+import { openWindow } from '@/utils';
+import { Tooltip } from 'antd';
 
 export default function GithubLink() {
   function openGithub() {

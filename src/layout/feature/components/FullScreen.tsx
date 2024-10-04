@@ -1,6 +1,6 @@
-import { Tooltip } from 'antd';
-import { useFullscreen } from 'ahooks';
 import SvgIcon from '@/components/SvgIcon';
+import { useFullscreen } from 'ahooks';
+import { Tooltip } from 'antd';
 
 export default function FullScreen() {
   const [isFullscreen, { toggleFullscreen }] = useFullscreen(document.body);

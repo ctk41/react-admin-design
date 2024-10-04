@@ -1,5 +1,5 @@
-import { Tooltip } from 'antd';
 import SvgIcon from '@/components/SvgIcon';
+import { Tooltip } from 'antd';
 
 export default function DocLink() {
   return (

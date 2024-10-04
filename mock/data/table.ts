@@ -1,5 +1,5 @@
-import type { MockMethod } from 'vite-plugin-mock';
 import { Random } from 'mockjs';
+import type { MockMethod } from 'vite-plugin-mock';
 import { resultPageSuccess } from '../_utils';
 
 const getPhone = () => {
@@ -10,21 +10,39 @@ const getPhone = () => {
 };
 
 const getEducation = () => {
-  const educationList = ['小学', '初中', '高中', '专科', '本科', '研究生'];
+  const educationList = [
+    'Elementary',
+    'Middle School',
+    'High School',
+    'Associate Degree',
+    "Bachelor's Degree",
+    'Graduate',
+  ];
   const randomNum = Math.floor(Math.random() * educationList.length);
   return educationList[randomNum];
 };
 
 const getMarried = () => {
-  return Math.floor(Math.random() * 4);
+  return Math.floor(Math.random() * 4); // 0-3 for married status (e.g., single, married, divorced, widowed)
 };
 
 const getHobby = () => {
   const list: any[] = [];
-  const hobbyList = ['羽毛球', '乒乓球', '篮球', '排球', '网球', '游泳', '滑雪', '跳高', '滑翔', '潜水'];
-  const len = [3, 4][Number(Random.boolean())];
+  const hobbyList = [
+    'Badminton',
+    'Table Tennis',
+    'Basketball',
+    'Volleyball',
+    'Tennis',
+    'Swimming',
+    'Skiing',
+    'High Jump',
+    'Gliding',
+    'Diving',
+  ];
+  const len = [3, 4][Number(Random.boolean())]; // Randomly choose between 3 or 4 hobbies
   for (let key = 0; key < len; key++) {
-    const randomNum = Math.floor(Math.random() * 10);
+    const randomNum = Math.floor(Math.random() * hobbyList.length);
     list.push(hobbyList[randomNum]);
   }
   return list;
@@ -33,11 +51,11 @@ const getHobby = () => {
 const genList = () => {
   const list: any[] = [];
   for (let index = 0; index < 100; index++) {
-    const num = index < 10 ? '0' + index : index;
+    const num = index < 10 ? '0' + index : index.toString();
     list.push({
       id: Number(`10${num}`) + 1,
-      name: Random.cname(),
-      sex: ['男', '女'][Number(Random.boolean())],
+      name: Random.cname(), // Generates a random Chinese name
+      sex: ['Male', 'Female'][Number(Random.boolean())],
       phone: getPhone(),
       education: getEducation(),
       married: getMarried(),

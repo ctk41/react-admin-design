@@ -1,6 +1,6 @@
 import { Layout } from 'antd';
-import { Breadcrumb, FoldTrigger } from './components';
 import LayoutFeature from '../feature';
+import { Breadcrumb, FoldTrigger } from './components';
 
 const LayoutHeader = () => {
   const { Header } = Layout;
