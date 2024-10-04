@@ -1,15 +1,15 @@
+import logoIcon from '@/assets/images/logo_name.png';
+import { TOKEN_KEY } from '@/enums/cacheEnum';
+import { getUserInfo, loginApi } from '@/service';
+import { useAppDispatch, useAppSelector } from '@/stores';
+import { setSessionTimeout, setToken, setUserInfo } from '@/stores/modules/user';
 import type { LoginParams, UserInfo } from '@/types';
+import { getAuthCache } from '@/utils/auth';
+import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { Button, Checkbox, Form, Input, message } from 'antd';
+import classNames from 'classnames';
 import { type FC, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { Form, Input, Checkbox, Button, message } from 'antd';
-import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { useAppSelector, useAppDispatch } from '@/stores';
-import { setToken, setUserInfo, setSessionTimeout } from '@/stores/modules/user';
-import { getAuthCache } from '@/utils/auth';
-import { TOKEN_KEY } from '@/enums/cacheEnum';
-import { loginApi, getUserInfo } from '@/service';
-import logoIcon from '@/assets/images/logo_name.png';
-import classNames from 'classnames';
 import styles from './index.module.less';
 
 const LoginPage: FC = () => {
@@ -51,8 +51,6 @@ const LoginPage: FC = () => {
     try {
       const { goHome = true, ...loginParams } = params;
       const data = await loginApi(loginParams);
-
-      // 保存 Token
       dispatch(setToken(data?.token));
       return afterLoginAction(goHome);
     } catch (error) {
