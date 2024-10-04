@@ -1,38 +1,34 @@
-import { service } from '@/utils/axios';
+import { httpService } from '@/utils/axios';
 
 interface LoginParams {
   username: string;
   password: string;
 }
 
-// User login api
 export function loginApi(data: LoginParams): Promise<any> {
-  return service({
+  return httpService({
     url: '/login',
     method: 'post',
     data,
   });
 }
 
-// Get User info
 export function getUserInfo(): Promise<any> {
-  return service({
+  return httpService({
     url: '/getUserInfo',
     method: 'get',
   });
 }
 
-// User logout api
 export function logoutApi() {
-  return service({
+  return httpService({
     url: '/logout',
     method: 'get',
   });
 }
 
-// Table list
 export function getTableList(params: any) {
-  return service({
+  return httpService({
     url: '/table/getTableList',
     method: 'get',
     params,
