@@ -9,6 +9,9 @@
   "scripts": {
     "dev": "vite",
     "build": "rimraf dist && tsc && vite build",
+    "build:development": "rimraf dist && tsc && vite build --mode development",
+    "build:staging": "rimraf dist && tsc && vite build --mode staging",
+    "build:production": "rimraf dist && tsc && vite build --mode production",
     "preview": "vite preview",
     "clean:cache": "rimraf .eslintcache && rimraf node_modules && pnpm install",
     "lint:eslint": "eslint --cache \"{src,mock,build}/**/*.{js,ts,tsx}\" --fix",
