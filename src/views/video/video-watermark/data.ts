@@ -1,5 +1,5 @@
-import type { ImageElementState, TextElementState, ContainerState } from './types'
-import { VIDEO_RES_SRC, VIDEO_IMG_SRC } from '@/settings/websiteSetting'
+import type { ImageElementState, TextElementState, ContainerState } from './types';
+import { VIDEO_RES_SRC, VIDEO_IMG_SRC } from '@/settings/websiteSetting';
 
 export const textElement: TextElementState = {
   x: 300,
@@ -10,7 +10,7 @@ export const textElement: TextElementState = {
   type: 'text',
   tag: 'text_1',
   active: false,
-  text: '请输入文本',
+  text: 'Please enter text',
   style: {
     fontFamily: '微软雅黑',
     fontSize: '24px',
@@ -20,9 +20,9 @@ export const textElement: TextElementState = {
     fontWeight: '',
     fontStyle: '',
     textShadow: '',
-    textAlign: 'left'
-  }
-}
+    textAlign: 'left',
+  },
+};
 
 export const imageElement: ImageElementState = {
   x: 320,
@@ -33,11 +33,11 @@ export const imageElement: ImageElementState = {
   type: 'image',
   tag: 'image_2',
   active: false,
-  url: VIDEO_IMG_SRC
-}
+  url: VIDEO_IMG_SRC,
+};
 
 export const containerObj: ContainerState = {
   width: 850,
   height: 480,
-  videoUrl: VIDEO_RES_SRC
-}
+  videoUrl: VIDEO_RES_SRC,
+};

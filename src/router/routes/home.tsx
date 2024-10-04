@@ -1,7 +1,7 @@
-import { lazy } from '@loadable/component'
-import type { RouteObject } from '../types'
-import { LayoutGuard } from '../guard'
-import { LazyLoad } from '@/components/LazyLoad'
+import { lazy } from '@loadable/component';
+import type { RouteObject } from '../types';
+import { LayoutGuard } from '../guard';
+import { LazyLoad } from '@/components/LazyLoad';
 
 // Home route
 const HomeRoute: RouteObject = {
@@ -9,11 +9,11 @@ const HomeRoute: RouteObject = {
   name: 'Home',
   element: <LayoutGuard />,
   meta: {
-    title: '首页',
+    title: 'Home',
     icon: 'home',
     affix: true,
     orderNo: 1,
-    hideChildrenInMenu: true
+    hideChildrenInMenu: true,
   },
   children: [
     {
@@ -21,14 +21,14 @@ const HomeRoute: RouteObject = {
       name: 'HomePage',
       element: LazyLoad(lazy(() => import('@/views/home'))),
       meta: {
-        title: '首页',
+        title: 'Home',
         key: 'home',
         icon: 'home',
         orderNo: 1,
-        hideMenu: true
-      }
-    }
-  ]
-}
+        hideMenu: true,
+      },
+    },
+  ],
+};
 
-export default HomeRoute
+export default HomeRoute;

@@ -1,7 +1,7 @@
-import { lazy } from '@loadable/component'
-import type { RouteObject } from '../types'
-import { LayoutGuard } from '../guard'
-import { LazyLoad } from '@/components/LazyLoad'
+import { lazy } from '@loadable/component';
+import type { RouteObject } from '../types';
+import { LayoutGuard } from '../guard';
+import { LazyLoad } from '@/components/LazyLoad';
 
 // image module page
 const ImageRoute: RouteObject = {
@@ -9,9 +9,9 @@ const ImageRoute: RouteObject = {
   name: 'Image',
   element: <LayoutGuard />,
   meta: {
-    title: '图片处理',
+    title: 'Image Processing',
     icon: 'image',
-    orderNo: 4
+    orderNo: 4,
   },
   children: [
     {
@@ -19,29 +19,29 @@ const ImageRoute: RouteObject = {
       name: 'ImageCropper',
       element: LazyLoad(lazy(() => import('@/views/image/image-cropper'))),
       meta: {
-        title: '图片裁剪',
-        key: 'imageCropper'
-      }
+        title: 'Image Cropping',
+        key: 'imageCropper',
+      },
     },
     {
       path: 'image-compress',
       name: 'ImageCompress',
       element: LazyLoad(lazy(() => import('@/views/image/image-compress'))),
       meta: {
-        title: '图片压缩',
-        key: 'imageCompress'
-      }
+        title: 'Image Compression',
+        key: 'imageCompress',
+      },
     },
     {
       path: 'image-composition',
       name: 'ImageComposition',
       element: LazyLoad(lazy(() => import('@/views/image/image-composition'))),
       meta: {
-        title: '图片合成',
-        key: 'imageComposition'
-      }
-    }
-  ]
-}
+        title: 'Image Composition',
+        key: 'imageComposition',
+      },
+    },
+  ],
+};
 
-export default ImageRoute
+export default ImageRoute;

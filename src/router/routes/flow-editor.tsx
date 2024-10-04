@@ -1,7 +1,7 @@
-import { lazy } from '@loadable/component'
-import type { RouteObject } from '../types'
-import { LayoutGuard } from '../guard'
-import { LazyLoad } from '@/components/LazyLoad'
+import { lazy } from '@loadable/component';
+import type { RouteObject } from '../types';
+import { LayoutGuard } from '../guard';
+import { LazyLoad } from '@/components/LazyLoad';
 
 // flow-editor module page
 const FlowEditorRoute: RouteObject = {
@@ -9,9 +9,9 @@ const FlowEditorRoute: RouteObject = {
   name: 'FlowEditor',
   element: <LayoutGuard />,
   meta: {
-    title: '流程图编辑器',
+    title: 'Flow Chart Editor',
     icon: 'flow',
-    orderNo: 8
+    orderNo: 8,
   },
   children: [
     {
@@ -19,20 +19,20 @@ const FlowEditorRoute: RouteObject = {
       name: 'FlowApprove',
       element: LazyLoad(lazy(() => import('@/views/flow/flow-approve'))),
       meta: {
-        title: '审批流程图',
-        key: 'flowApprove'
-      }
+        title: 'Approval Flow Chart',
+        key: 'flowApprove',
+      },
     },
     {
       path: 'flow-bpmn',
       name: 'FlowBpmn',
       element: LazyLoad(lazy(() => import('@/views/flow/flow-bpmn'))),
       meta: {
-        title: 'BPMN流程图',
-        key: 'flowBpmn'
-      }
-    }
-  ]
-}
+        title: 'BPMN Flow Chart',
+        key: 'flowBpmn',
+      },
+    },
+  ],
+};
 
-export default FlowEditorRoute
+export default FlowEditorRoute;

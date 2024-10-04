@@ -1,3 +1,3 @@
-import VideoReact from './src/VideoReact'
+import VideoReact from './src/VideoReact';
 
-export { VideoReact }
+export { VideoReact };

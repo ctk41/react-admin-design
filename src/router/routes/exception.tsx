@@ -1,8 +1,8 @@
-import { lazy } from '@loadable/component'
-import type { RouteObject } from '../types'
-import { LayoutGuard } from '../guard'
-import { ExceptionEnum } from '@/enums/exceptionEnum'
-import { LazyLoad } from '@/components/LazyLoad'
+import { lazy } from '@loadable/component';
+import type { RouteObject } from '../types';
+import { LayoutGuard } from '../guard';
+import { ExceptionEnum } from '@/enums/exceptionEnum';
+import { LazyLoad } from '@/components/LazyLoad';
 
 // exception module page
 const ExceptionRoute: RouteObject = {
@@ -10,9 +10,9 @@ const ExceptionRoute: RouteObject = {
   name: 'ExceptionPage',
   element: <LayoutGuard />,
   meta: {
-    title: '异常页面',
+    title: 'Exception Page',
     icon: 'bug',
-    orderNo: 11
+    orderNo: 11,
   },
   children: [
     {
@@ -20,32 +20,32 @@ const ExceptionRoute: RouteObject = {
       name: 'Page403',
       element: LazyLoad(lazy(() => import('@/views/exception'))),
       meta: {
-        title: '403页面',
-        key: 'page403'
+        title: '403 Page',
+        key: 'page403',
       },
-      loader: () => ({ status: ExceptionEnum.PAGE_NOT_ACCESS, withCard: true })
+      loader: () => ({ status: ExceptionEnum.PAGE_NOT_ACCESS, withCard: true }),
     },
     {
       path: 'page-404',
       name: 'Page404',
       element: LazyLoad(lazy(() => import('@/views/exception'))),
       meta: {
-        title: '404页面',
-        key: 'page404'
+        title: '404 Page',
+        key: 'page404',
       },
-      loader: () => ({ status: ExceptionEnum.PAGE_NOT_FOUND, withCard: true })
+      loader: () => ({ status: ExceptionEnum.PAGE_NOT_FOUND, withCard: true }),
     },
     {
       path: 'page-500',
       name: 'Page500',
       element: LazyLoad(lazy(() => import('@/views/exception'))),
       meta: {
-        title: '500页面',
-        key: 'page500'
+        title: '500 Page',
+        key: 'page500',
       },
-      loader: () => ({ status: ExceptionEnum.SERVER_ERROR, withCard: true })
-    }
-  ]
-}
+      loader: () => ({ status: ExceptionEnum.SERVER_ERROR, withCard: true }),
+    },
+  ],
+};
 
-export default ExceptionRoute
+export default ExceptionRoute;

@@ -1,7 +1,7 @@
-import { lazy } from '@loadable/component'
-import type { RouteObject } from '../types'
-import { LayoutGuard } from '../guard'
-import { LazyLoad } from '@/components/LazyLoad'
+import { lazy } from '@loadable/component';
+import type { RouteObject } from '../types';
+import { LayoutGuard } from '../guard';
+import { LazyLoad } from '@/components/LazyLoad';
 
 // tree module page
 const TreeRoute: RouteObject = {
@@ -9,9 +9,9 @@ const TreeRoute: RouteObject = {
   name: 'Tree',
   element: <LayoutGuard />,
   meta: {
-    title: '树形结构',
+    title: 'Tree Structure',
     icon: 'tree',
-    orderNo: 9
+    orderNo: 9,
   },
   children: [
     {
@@ -19,20 +19,20 @@ const TreeRoute: RouteObject = {
       name: 'OrgTree',
       element: LazyLoad(lazy(() => import('@/views/tree/org-tree'))),
       meta: {
-        title: '组织树',
-        key: 'orgTree'
-      }
+        title: 'Organization Tree',
+        key: 'orgTree',
+      },
     },
     {
       path: 'antd-tree',
       name: 'AntdTree',
       element: LazyLoad(lazy(() => import('@/views/tree/antd-tree'))),
       meta: {
-        title: '控件树',
-        key: 'antdTree'
-      }
-    }
-  ]
-}
+        title: 'Component Tree',
+        key: 'antdTree',
+      },
+    },
+  ],
+};
 
-export default TreeRoute
+export default TreeRoute;

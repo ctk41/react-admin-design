@@ -1,7 +1,7 @@
-import { lazy } from '@loadable/component'
-import type { RouteObject } from '../types'
-import { LayoutGuard } from '../guard'
-import { LazyLoad } from '@/components/LazyLoad'
+import { lazy } from '@loadable/component';
+import type { RouteObject } from '../types';
+import { LayoutGuard } from '../guard';
+import { LazyLoad } from '@/components/LazyLoad';
 
 // form module page
 const FormRoute: RouteObject = {
@@ -9,9 +9,9 @@ const FormRoute: RouteObject = {
   name: 'Form',
   element: <LayoutGuard />,
   meta: {
-    title: '表单',
+    title: 'Form',
     icon: 'form',
-    orderNo: 2
+    orderNo: 2,
   },
   children: [
     {
@@ -19,20 +19,20 @@ const FormRoute: RouteObject = {
       name: 'BasicForm',
       element: LazyLoad(lazy(() => import('@/views/form/basic-form'))),
       meta: {
-        title: '基础表单',
-        key: 'basicForm'
-      }
+        title: 'Basic Form',
+        key: 'basicForm',
+      },
     },
     {
       path: 'form-designer',
       name: 'FormDesigner',
       element: LazyLoad(lazy(() => import('@/views/blank'))),
       meta: {
-        title: '表单设计器',
-        key: 'formDesigner'
-      }
-    }
-  ]
-}
+        title: 'Form Designer',
+        key: 'formDesigner',
+      },
+    },
+  ],
+};
 
-export default FormRoute
+export default FormRoute;
