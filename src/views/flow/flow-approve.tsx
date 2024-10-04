@@ -1,7 +1,7 @@
-import { Card } from 'antd'
-import { PageWrapper } from '@/components/Page'
-import { FLOW_EDITOR_PLUGIN } from '@/settings/websiteSetting'
-import { Approve } from '@/components/LogicFlow'
+import { Card } from 'antd';
+import { PageWrapper } from '@/components/Page';
+import { FLOW_EDITOR_PLUGIN } from '@/settings/websiteSetting';
+import { Approve } from '@/components/LogicFlow';
 
 const FlowApprove = () => {
   return (
@@ -12,7 +12,7 @@ const FlowApprove = () => {
         </div>
       </Card>
     </PageWrapper>
-  )
-}
+  );
+};
 
-export default FlowApprove
+export default FlowApprove;

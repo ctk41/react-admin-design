@@ -1,9 +1,9 @@
-import type { FC } from 'react'
-import { Form } from 'antd'
-import type { InfoState } from '../types'
+import type { FC } from 'react';
+import { Form } from 'antd';
+import type { InfoState } from '../types';
 
 interface PropState {
-  info: InfoState
+  info: InfoState;
 }
 
 const CodeInfo: FC<PropState> = ({ info }) => {
@@ -24,7 +24,7 @@ const CodeInfo: FC<PropState> = ({ info }) => {
         </Form.Item>
       </Form>
     </div>
-  )
-}
+  );
+};
 
-export default CodeInfo
+export default CodeInfo;

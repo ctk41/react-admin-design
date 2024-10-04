@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import { Row, Col, Card } from 'antd'
-import { PageWrapper } from '@/components/Page'
-import { cloneDeep } from 'lodash-es'
-import { SORTABLE_PLUGIN } from '@/settings/websiteSetting'
-import { ReactSortable } from 'react-sortablejs'
+import React, { useState } from 'react';
+import { Row, Col, Card } from 'antd';
+import { PageWrapper } from '@/components/Page';
+import { cloneDeep } from 'lodash-es';
+import { SORTABLE_PLUGIN } from '@/settings/websiteSetting';
+import { ReactSortable } from 'react-sortablejs';
 
 interface ItemState {
-  id: number
-  name: string
+  id: number;
+  name: string;
 }
 
 const DragList: React.FC = () => {
@@ -16,28 +16,28 @@ const DragList: React.FC = () => {
     { name: 'VueJS', id: 2 },
     { name: 'ReactJS', id: 3 },
     { name: 'AngularJS', id: 4 },
-    { name: 'Webpack', id: 5 }
-  ])
+    { name: 'Webpack', id: 5 },
+  ]);
   const [listTwo, setListTwo] = useState<ItemState[]>([
     { name: 'NodeJS', id: 6 },
-    { name: 'TypeScript', id: 7 }
-  ])
+    { name: 'TypeScript', id: 7 },
+  ]);
 
-  const [dragLogs, setDragLogs] = useState<string[]>(['列表1 => 列表2, 6 => 1', '列表1 => 列表2, 6 => 2'])
+  const [dragLogs, setDragLogs] = useState<string[]>(['列表1 => 列表2, 6 => 1', '列表1 => 列表2, 6 => 2']);
 
   const handleDrop = (event: any) => {
     const listMap = new Map([
       ['list1', '列表1'],
-      ['list2', '列表2']
-    ])
-    const fromClsName = event.from.className
-    const toClsName = event.to.className
-    const from = listMap.get(fromClsName)
-    const to = listMap.get(toClsName)
-    const newDrapLogs = cloneDeep(dragLogs)
-    newDrapLogs.push(`${from} => ${to}, ${event.oldIndex + 1} => ${event.newIndex + 1}`)
-    setDragLogs(newDrapLogs)
-  }
+      ['list2', '列表2'],
+    ]);
+    const fromClsName = event.from.className;
+    const toClsName = event.to.className;
+    const from = listMap.get(fromClsName);
+    const to = listMap.get(toClsName);
+    const newDrapLogs = cloneDeep(dragLogs);
+    newDrapLogs.push(`${from} => ${to}, ${event.oldIndex + 1} => ${event.newIndex + 1}`);
+    setDragLogs(newDrapLogs);
+  };
 
   return (
     <PageWrapper plugin={SORTABLE_PLUGIN}>
@@ -85,7 +85,7 @@ const DragList: React.FC = () => {
                 <p key={item} style={{ marginBottom: '8px' }}>
                   {item}
                 </p>
-              )
+              );
             })}
           </Card>
         </Col>
@@ -95,7 +95,7 @@ const DragList: React.FC = () => {
               {JSON.stringify(
                 listOne.map(({ name, id }) => ({ name, id })),
                 null,
-                2
+                2,
               )}
             </pre>
           </Card>
@@ -106,14 +106,14 @@ const DragList: React.FC = () => {
               {JSON.stringify(
                 listTwo.map(({ name, id }) => ({ name, id })),
                 null,
-                2
+                2,
               )}
             </pre>
           </Card>
         </Col>
       </Row>
     </PageWrapper>
-  )
-}
+  );
+};
 
-export default DragList
+export default DragList;

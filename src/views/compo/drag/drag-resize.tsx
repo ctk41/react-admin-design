@@ -1,16 +1,16 @@
-import type { FC } from 'react'
-import type { Position, DraggableData } from 'react-rnd'
-import { useState } from 'react'
-import { Card } from 'antd'
-import { PageWrapper } from '@/components/Page'
-import { REACT_RND_PLUGIN } from '@/settings/websiteSetting'
-import { Rnd } from 'react-rnd'
+import type { FC } from 'react';
+import type { Position, DraggableData } from 'react-rnd';
+import { useState } from 'react';
+import { Card } from 'antd';
+import { PageWrapper } from '@/components/Page';
+import { REACT_RND_PLUGIN } from '@/settings/websiteSetting';
+import { Rnd } from 'react-rnd';
 
 interface configState {
-  x: number
-  y: number
-  width: number
-  height: number
+  x: number;
+  y: number;
+  width: number;
+  height: number;
 }
 
 const DragResize: FC = () => {
@@ -18,25 +18,25 @@ const DragResize: FC = () => {
     x: 650,
     y: 130,
     width: 180,
-    height: 180
-  })
+    height: 180,
+  });
 
   const handleDragStop = (_e: any, data: DraggableData) => {
     setConfig({
       ...config,
       x: data.x,
-      y: data.y
-    })
-  }
+      y: data.y,
+    });
+  };
 
   const handleResize = (_e: any, _direction: any, ref: any, _delta: any, position: Position) => {
     setConfig({
       ...config,
       width: ref.offsetWidth,
       height: ref.offsetHeight,
-      ...position
-    })
-  }
+      ...position,
+    });
+  };
 
   return (
     <PageWrapper plugin={REACT_RND_PLUGIN}>
@@ -64,7 +64,7 @@ const DragResize: FC = () => {
         </div>
       </Card>
     </PageWrapper>
-  )
-}
+  );
+};
 
-export default DragResize
+export default DragResize;

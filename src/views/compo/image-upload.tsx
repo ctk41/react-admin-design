@@ -1,64 +1,64 @@
-import type { UploadFile } from 'antd/es/upload/interface'
-import type { RcFile, UploadProps } from 'antd/es/upload'
-import React, { useState } from 'react'
-import { Row, Col, Card, Button, Upload, Modal } from 'antd'
-import { CloudUploadOutlined, PlusOutlined } from '@ant-design/icons'
-import { PageWrapper } from '@/components/Page'
-import { UPLOAD_COMPO } from '@/settings/websiteSetting'
-import { UPLOAD_IMG_SRC, UPLOAD_IMG_SRC2 } from '@/settings/websiteSetting'
+import type { UploadFile } from 'antd/es/upload/interface';
+import type { RcFile, UploadProps } from 'antd/es/upload';
+import React, { useState } from 'react';
+import { Row, Col, Card, Button, Upload, Modal } from 'antd';
+import { CloudUploadOutlined, PlusOutlined } from '@ant-design/icons';
+import { PageWrapper } from '@/components/Page';
+import { UPLOAD_COMPO } from '@/settings/websiteSetting';
+import { UPLOAD_IMG_SRC, UPLOAD_IMG_SRC2 } from '@/settings/websiteSetting';
 
 const ImageUpload: React.FC = () => {
-  const { Dragger } = Upload
+  const { Dragger } = Upload;
 
-  const [previewVisible, setPreviewVisible] = useState(false)
-  const [previewImage, setPreviewImage] = useState('')
-  const [previewTitle, setPreviewTitle] = useState('')
+  const [previewVisible, setPreviewVisible] = useState(false);
+  const [previewImage, setPreviewImage] = useState('');
+  const [previewTitle, setPreviewTitle] = useState('');
 
   const dragImgs: UploadFile[] = [
     { uid: '-1', name: 'beautiful-girl.jpg' },
-    { uid: '-2', name: 'beautiful-sunshine.jpg' }
-  ]
+    { uid: '-2', name: 'beautiful-sunshine.jpg' },
+  ];
   const [listImgs, setListImgs] = useState<UploadFile[]>([
     {
       uid: '-1',
       name: 'beautiful-girl.jpg',
       status: 'done',
       url: UPLOAD_IMG_SRC,
-      thumbUrl: UPLOAD_IMG_SRC
+      thumbUrl: UPLOAD_IMG_SRC,
     },
     {
       uid: '-2',
       name: 'beautiful-sunshine.jpg',
       status: 'done',
       url: UPLOAD_IMG_SRC2,
-      thumbUrl: UPLOAD_IMG_SRC2
-    }
-  ])
+      thumbUrl: UPLOAD_IMG_SRC2,
+    },
+  ]);
 
   const handlePreview = async (file: UploadFile) => {
     if (!file.url && !file.preview) {
-      file.preview = (await getBase64(file.originFileObj as RcFile)) as string
+      file.preview = (await getBase64(file.originFileObj as RcFile)) as string;
     }
-    setPreviewImage(file.url || (file.preview as string))
-    setPreviewVisible(true)
-    setPreviewTitle(file.name || file.url!.substring(file.url!.lastIndexOf('/') + 1))
-  }
+    setPreviewImage(file.url || (file.preview as string));
+    setPreviewVisible(true);
+    setPreviewTitle(file.name || file.url!.substring(file.url!.lastIndexOf('/') + 1));
+  };
 
   const getBase64 = (file: RcFile): Promise<string> => {
     return new Promise((resolve, reject) => {
-      const reader = new FileReader()
-      reader.readAsDataURL(file)
-      reader.onload = () => resolve(reader.result as string)
-      reader.onerror = error => reject(error)
-    })
-  }
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = error => reject(error);
+    });
+  };
 
-  const handleChange: UploadProps['onChange'] = ({ fileList: newFileList }) => setListImgs(newFileList)
+  const handleChange: UploadProps['onChange'] = ({ fileList: newFileList }) => setListImgs(newFileList);
 
   const handleCancle = () => {
-    setPreviewVisible(false)
-    setPreviewTitle('')
-  }
+    setPreviewVisible(false);
+    setPreviewTitle('');
+  };
 
   return (
     <PageWrapper plugin={UPLOAD_COMPO}>
@@ -121,7 +121,7 @@ const ImageUpload: React.FC = () => {
         </Col>
       </Row>
     </PageWrapper>
-  )
-}
+  );
+};
 
-export default ImageUpload
+export default ImageUpload;

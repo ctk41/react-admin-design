@@ -1,11 +1,11 @@
-import React, { useRef, useState, useEffect } from 'react'
-import { Row, Col, Card, Button, Form, Input, InputNumber, Space } from 'antd'
-import { PageWrapper } from '@/components/Page'
-import CountUp, { useCountUp } from 'react-countup'
-import { COUNTUP_PLUGIN } from '@/settings/websiteSetting'
+import React, { useRef, useState, useEffect } from 'react';
+import { Row, Col, Card, Button, Form, Input, InputNumber, Space } from 'antd';
+import { PageWrapper } from '@/components/Page';
+import CountUp, { useCountUp } from 'react-countup';
+import { COUNTUP_PLUGIN } from '@/settings/websiteSetting';
 
 const CountUpPage: React.FC = () => {
-  const [form] = Form.useForm()
+  const [form] = Form.useForm();
   const [formData, setFromData] = useState({
     start: 0,
     end: 2020,
@@ -13,22 +13,22 @@ const CountUpPage: React.FC = () => {
     decimals: 0,
     separator: ',',
     prefix: '￥ ',
-    suffix: ' rmb'
-  })
+    suffix: ' rmb',
+  });
 
-  const countUpRef = useRef(null)
+  const countUpRef = useRef(null);
   const { start, reset } = useCountUp({
     ref: countUpRef,
-    ...formData
-  })
+    ...formData,
+  });
 
   useEffect(() => {
-    reset()
-  }, [])
+    reset();
+  }, []);
 
   const onValuesChange = (values: any) => {
-    setFromData({ ...formData, ...values })
-  }
+    setFromData({ ...formData, ...values });
+  };
 
   return (
     <PageWrapper plugin={COUNTUP_PLUGIN}>
@@ -42,7 +42,7 @@ const CountUpPage: React.FC = () => {
               style={{
                 height: '100%',
                 fontSize: '40px',
-                color: '#e65d6e'
+                color: '#e65d6e',
               }}
               className='flex-center'
             />
@@ -55,7 +55,7 @@ const CountUpPage: React.FC = () => {
                 ref={countUpRef}
                 style={{
                   fontSize: '40px',
-                  color: '#e65d6e'
+                  color: '#e65d6e',
                 }}
               />
             </div>
@@ -110,7 +110,7 @@ const CountUpPage: React.FC = () => {
               style={{
                 height: '100%',
                 fontSize: '40px',
-                color: '#30b08f'
+                color: '#30b08f',
               }}
               className='flex-center'
             />
@@ -118,7 +118,7 @@ const CountUpPage: React.FC = () => {
         </Col>
       </Row>
     </PageWrapper>
-  )
-}
+  );
+};
 
-export default CountUpPage
+export default CountUpPage;

@@ -1,48 +1,48 @@
-import type { DataNode } from 'antd/es/tree'
-import React, { useState } from 'react'
-import { Row, Col, Card, Transfer, Table, Tree } from 'antd'
-import { PageWrapper } from '@/components/Page'
-import { TRANSFER_COMPO } from '@/settings/websiteSetting'
-import { mockData, treeData, transferDataSource } from './data'
+import type { DataNode } from 'antd/es/tree';
+import React, { useState } from 'react';
+import { Row, Col, Card, Transfer, Table, Tree } from 'antd';
+import { PageWrapper } from '@/components/Page';
+import { TRANSFER_COMPO } from '@/settings/websiteSetting';
+import { mockData, treeData, transferDataSource } from './data';
 
 const TransferPage: React.FC = () => {
-  const [targetKeys, setTargetKeys] = useState(['1', '5'])
-  const [selectedKeys, setSelectedKeys] = useState<string[]>(['2', '6'])
-  const [treeTargetKeys, setTreeTargetKeys] = useState<string[]>([])
+  const [targetKeys, setTargetKeys] = useState(['1', '5']);
+  const [selectedKeys, setSelectedKeys] = useState<string[]>(['2', '6']);
+  const [treeTargetKeys, setTreeTargetKeys] = useState<string[]>([]);
 
   const onChange = (nextTargetKeys: string[]) => {
-    setTargetKeys(nextTargetKeys)
-  }
+    setTargetKeys(nextTargetKeys);
+  };
 
   const onSelectChange = (sourceSelectedKeys: string[], targetSelectedKeys: string[]) => {
-    setSelectedKeys([...sourceSelectedKeys, ...targetSelectedKeys])
-  }
+    setSelectedKeys([...sourceSelectedKeys, ...targetSelectedKeys]);
+  };
 
-  const isChecked = (selectedKeys: (string | number)[], eventKey: string | number) => selectedKeys.includes(eventKey)
+  const isChecked = (selectedKeys: (string | number)[], eventKey: string | number) => selectedKeys.includes(eventKey);
 
   const generateTree = (treeNodes: DataNode[] = [], checkedKeys: string[] = []): DataNode[] =>
     treeNodes.map(({ children, ...props }) => ({
       ...props,
       disabled: checkedKeys.includes(props.key as string),
-      children: generateTree(children, checkedKeys)
-    }))
+      children: generateTree(children, checkedKeys),
+    }));
 
   const handleChange = (nextTargetKeys: string[]) => {
-    setTreeTargetKeys(nextTargetKeys)
-  }
+    setTreeTargetKeys(nextTargetKeys);
+  };
 
   const getRowSelection = ({ selectedKeys, onItemSelectAll, onItemSelect }: Record<string, any>) => {
     return {
       onSelectAll(selected: boolean, selectedRows: Record<string, string | boolean>[]) {
-        const treeSelectedKeys = selectedRows.filter(item => !item.disabled).map(({ key }) => key)
-        onItemSelectAll(treeSelectedKeys, selected)
+        const treeSelectedKeys = selectedRows.filter(item => !item.disabled).map(({ key }) => key);
+        onItemSelectAll(treeSelectedKeys, selected);
       },
       onSelect({ key }: Record<string, string>, selected: boolean) {
-        onItemSelect(key, selected)
+        onItemSelect(key, selected);
       },
-      selectedRowKeys: selectedKeys
-    }
-  }
+      selectedRowKeys: selectedKeys,
+    };
+  };
 
   return (
     <PageWrapper plugin={TRANSFER_COMPO}>
@@ -73,7 +73,7 @@ const TransferPage: React.FC = () => {
             >
               {({ direction, selectedKeys, onItemSelect }) => {
                 if (direction === 'left') {
-                  const treeCheckedKeys = [...selectedKeys, ...treeTargetKeys]
+                  const treeCheckedKeys = [...selectedKeys, ...treeTargetKeys];
                   return (
                     <Tree
                       blockNode
@@ -83,13 +83,13 @@ const TransferPage: React.FC = () => {
                       checkedKeys={treeCheckedKeys}
                       treeData={generateTree(treeData, treeTargetKeys)}
                       onCheck={(_, { node: { key } }) => {
-                        onItemSelect(key as string, !isChecked(treeCheckedKeys, key as string))
+                        onItemSelect(key as string, !isChecked(treeCheckedKeys, key as string));
                       }}
                       onSelect={(_, { node: { key } }) => {
-                        onItemSelect(key as string, !isChecked(treeCheckedKeys, key as string))
+                        onItemSelect(key as string, !isChecked(treeCheckedKeys, key as string));
                       }}
                     />
-                  )
+                  );
                 }
               }}
             </Transfer>
@@ -113,8 +113,8 @@ const TransferPage: React.FC = () => {
                   pagination={false}
                   onRow={({ key }) => ({
                     onClick: () => {
-                      onItemSelect(key, !selectedKeys.includes(key))
-                    }
+                      onItemSelect(key, !selectedKeys.includes(key));
+                    },
                   })}
                 />
               )}
@@ -123,7 +123,7 @@ const TransferPage: React.FC = () => {
         </Col>
       </Row>
     </PageWrapper>
-  )
-}
+  );
+};
 
-export default TransferPage
+export default TransferPage;

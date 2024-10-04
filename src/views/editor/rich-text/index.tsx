@@ -1,25 +1,25 @@
-import { type FC, useState, useEffect } from 'react'
-import { PageWrapper } from '@/components/Page'
-import { WANG_EDITOR_PLUGIN } from '@/settings/websiteSetting'
-import type { IDomEditor, IEditorConfig, IToolbarConfig } from '@wangeditor/editor'
-import Editor from './components/Editor'
-import Toolbar from './components/Toolbar'
-import '@wangeditor/editor/dist/css/style.css'
+import { type FC, useState, useEffect } from 'react';
+import { PageWrapper } from '@/components/Page';
+import { WANG_EDITOR_PLUGIN } from '@/settings/websiteSetting';
+import type { IDomEditor, IEditorConfig, IToolbarConfig } from '@wangeditor/editor';
+import Editor from './components/Editor';
+import Toolbar from './components/Toolbar';
+import '@wangeditor/editor/dist/css/style.css';
 
 const RichTextEditor: FC = () => {
-  const [editor, setEditor] = useState<IDomEditor | null>(null)
-  const [html, setHtml] = useState('<p>hello</p>')
+  const [editor, setEditor] = useState<IDomEditor | null>(null);
+  const [html, setHtml] = useState('<p>hello</p>');
 
-  const toolbarConfig: Partial<IToolbarConfig> = {}
-  const editorConfig: Partial<IEditorConfig> = {}
+  const toolbarConfig: Partial<IToolbarConfig> = {};
+  const editorConfig: Partial<IEditorConfig> = {};
 
   useEffect(() => {
     return () => {
-      if (editor == null) return
-      editor.destroy()
-      setEditor(null)
-    }
-  }, [editor])
+      if (editor == null) return;
+      editor.destroy();
+      setEditor(null);
+    };
+  }, [editor]);
 
   return (
     <PageWrapper plugin={WANG_EDITOR_PLUGIN}>
@@ -40,7 +40,7 @@ const RichTextEditor: FC = () => {
         />
       </div>
     </PageWrapper>
-  )
-}
+  );
+};
 
-export default RichTextEditor
+export default RichTextEditor;

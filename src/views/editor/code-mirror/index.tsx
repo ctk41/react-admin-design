@@ -1,55 +1,55 @@
-import type { FC } from 'react'
-import type { ConfigState, InfoState } from './types'
-import { useState, useCallback } from 'react'
-import { useImmer } from 'use-immer'
-import { Card } from 'antd'
-import { useDebounceFn } from 'ahooks'
-import { PageWrapper } from '@/components/Page'
-import { CODEMIRROR_PLUGIN } from '@/settings/websiteSetting'
-import CodeMirror from '@uiw/react-codemirror'
-import { javascript } from '@codemirror/lang-javascript'
-import Toolbar from './components/Toolbar'
-import CodeInfo from './components/CodeInfo'
+import type { FC } from 'react';
+import type { ConfigState, InfoState } from './types';
+import { useState, useCallback } from 'react';
+import { useImmer } from 'use-immer';
+import { Card } from 'antd';
+import { useDebounceFn } from 'ahooks';
+import { PageWrapper } from '@/components/Page';
+import { CODEMIRROR_PLUGIN } from '@/settings/websiteSetting';
+import CodeMirror from '@uiw/react-codemirror';
+import { javascript } from '@codemirror/lang-javascript';
+import Toolbar from './components/Toolbar';
+import CodeInfo from './components/CodeInfo';
 
 const CodeMirrorEditor: FC = () => {
-  const [codeVal, setCodeVal] = useState(`console.log('Hello, world!')`)
+  const [codeVal, setCodeVal] = useState(`console.log('Hello, world!')`);
   const [config, setConfig] = useState<ConfigState>({
     language: 'javascript',
     autoFocus: true,
     indentWithTab: true,
-    height: '350px'
-  })
+    height: '350px',
+  });
   const [codeInfo, setCodeInfo] = useImmer<InfoState>({
     lines: null as null | number,
     cursor: null as null | number,
     selected: null as null | number,
-    length: null as null | number
-  })
+    length: null as null | number,
+  });
 
   const { run: handleStateUpdate } = useDebounceFn(
     (viewUpdate: any) => {
-      const ranges = viewUpdate.state.selection.ranges
-      const lines = viewUpdate.state.doc.lines
-      const cursor = ranges[0].head
-      const selected = ranges.reduce((plus: any, range: any) => plus + range.to - range.from, 0)
-      const length = viewUpdate.state.doc.length
+      const ranges = viewUpdate.state.selection.ranges;
+      const lines = viewUpdate.state.doc.lines;
+      const cursor = ranges[0].head;
+      const selected = ranges.reduce((plus: any, range: any) => plus + range.to - range.from, 0);
+      const length = viewUpdate.state.doc.length;
       setCodeInfo({
         lines,
         cursor,
         selected,
-        length
-      })
+        length,
+      });
     },
-    { wait: 200 }
-  )
+    { wait: 200 },
+  );
 
   const handleValueChange = useCallback((values: any) => {
-    setConfig({ ...config, ...values })
-  }, [])
+    setConfig({ ...config, ...values });
+  }, []);
 
   const handleChange = useCallback((value: any) => {
-    setCodeVal(value)
-  }, [])
+    setCodeVal(value);
+  }, []);
 
   return (
     <PageWrapper plugin={CODEMIRROR_PLUGIN}>
@@ -62,7 +62,7 @@ const CodeMirrorEditor: FC = () => {
           indentWithTab={config.indentWithTab}
           style={{
             borderLeft: 'solid 1px #ddd',
-            borderRight: 'solid 1px #ddd'
+            borderRight: 'solid 1px #ddd',
           }}
           extensions={[javascript({ jsx: true })]}
           placeholder='Please enter the code...'
@@ -72,7 +72,7 @@ const CodeMirrorEditor: FC = () => {
         <CodeInfo info={codeInfo} />
       </Card>
     </PageWrapper>
-  )
-}
+  );
+};
 
-export default CodeMirrorEditor
+export default CodeMirrorEditor;

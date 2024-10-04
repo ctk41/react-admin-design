@@ -1,7 +1,7 @@
-import { Card } from 'antd'
-import { PageWrapper } from '@/components/Page'
-import { FLOW_EDITOR_PLUGIN } from '@/settings/websiteSetting'
-import { Bpmn } from '@/components/LogicFlow'
+import { Card } from 'antd';
+import { PageWrapper } from '@/components/Page';
+import { FLOW_EDITOR_PLUGIN } from '@/settings/websiteSetting';
+import { Bpmn } from '@/components/LogicFlow';
 
 const FlowBpmn = () => {
   return (
@@ -12,7 +12,7 @@ const FlowBpmn = () => {
         </div>
       </Card>
     </PageWrapper>
-  )
-}
+  );
+};
 
-export default FlowBpmn
+export default FlowBpmn;
